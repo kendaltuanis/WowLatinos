@@ -1,0 +1,56 @@
+[
+  {
+    "outputFileName": "wwwroot/css/core_css.css",
+    "inputFiles": [
+      "wwwroot/plugins/bootstrap/css/bootstrap.min.css",
+      "wwwroot/css/font-awesome.css",
+      "wwwroot/plugins/owl-carousel/owl.carousel.css",
+      "wwwroot/plugins/owl-carousel/owl.theme.css",
+      "wwwroot/plugins/owl-carousel/owl.transitions.css",
+      "wwwroot/plugins/magnific-popup/magnific-popup.css",
+      "wwwroot/css/animate.css",
+      "wwwroot/css/superslides.css",
+      "wwwroot/css/blog.css"
+    ],
+    "sourceMap": false,
+    "sourceMapRootPath": null
+  },
+  {
+    "outputFileName": "wwwroot/plugins/___revolution-slider/css/settings.min.css",
+    "inputFiles": [
+      "wwwroot/plugins/___revolution-slider/css/settings.css"
+    ],
+    "sourceMap": false,
+    "sourceMapRootPath": null
+  },
+  {
+    "outputFileName": "wwwroot/css/theme_css.css",
+    "inputFiles": [
+      "wwwroot/css/essentials.css",
+      "wwwroot/css/layout.css",
+      "wwwroot/css/layout-responsive.css",
+      "wwwroot/css/color_scheme/orange.css"
+    ],
+    "sourceMap": false,
+    "sourceMapRootPath": null
+  },
+  {
+    "outputFileName": "wwwroot/plugins/modernizr.min.js",
+    "inputFiles": [
+      "wwwroot/plugins/modernizr.min.js"
+    ],
+    "sourceMap": false,
+    "sourceMapRootPath": null
+  },
+  {
+    "outputFileName": "wwwroot/css/theme_css_dark.css",
+    "inputFiles": [
+      "wwwroot/css/essentials.css",
+      "wwwroot/css/layout.css",
+      "wwwroot/css/layout-responsive.css",
+      "wwwroot/css/color_scheme/lightgrey.css"
+    ],
+    "sourceMap": false,
+    "sourceMapRootPath": null
+  }
+]

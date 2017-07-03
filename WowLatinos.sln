@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26510.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBAccess", "DBAccess\DBAccess.csproj", "{CB133905-2C25-40D2-BA56-B450D9D286D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpersSQL", "HelpersSQL\HelpersSQL.csproj", "{17334D76-DA1D-42A0-8434-010FE22208E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WowLatinos", "WowLatinos\WowLatinos.csproj", "{5BBBA8DB-9F6B-44A1-B141-3061FF452DC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB133905-2C25-40D2-BA56-B450D9D286D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB133905-2C25-40D2-BA56-B450D9D286D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB133905-2C25-40D2-BA56-B450D9D286D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB133905-2C25-40D2-BA56-B450D9D286D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17334D76-DA1D-42A0-8434-010FE22208E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17334D76-DA1D-42A0-8434-010FE22208E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17334D76-DA1D-42A0-8434-010FE22208E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17334D76-DA1D-42A0-8434-010FE22208E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBBA8DB-9F6B-44A1-B141-3061FF452DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBBA8DB-9F6B-44A1-B141-3061FF452DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBBA8DB-9F6B-44A1-B141-3061FF452DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBBA8DB-9F6B-44A1-B141-3061FF452DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

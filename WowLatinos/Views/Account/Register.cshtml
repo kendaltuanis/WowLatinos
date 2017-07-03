@@ -1,0 +1,129 @@
+﻿@model WowLatinos.Models.BD.Account
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper">
+
+        <!-- PAGE TITLE -->
+        <header id="page-title">
+            <div class="container">
+                <h1>Registro</h1>
+
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="active">Página de registro</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="container">
+
+            <div class="row">
+
+                <!-- REGISTER -->
+                <div class="col-md-6">
+
+                    <h2>Crear <strong>Cuenta</strong></h2>
+
+                    <form class="white-row" role="form" method="post" ActionName="Register">
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Nombre</label>
+                                    <input type="text" value="" class="form-control" placeholder="Su nombre">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Usuario</label>
+                                    @Html.EditorFor(model => model.user, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Su usuario", @required = true } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Correo</label>
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "email", @class = "form-control", @placeholder = "Su correo electrónico", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Teléfono</label>
+                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @type = "tel", @class = "form-control", @placeholder = "Su celular", @required = true } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Contraseña</label>
+                                    @Html.EditorFor(model => model.pass, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = "Su contraseña", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Confirmar contraseña</label>
+                                    <input type="password" value="" class="form-control" placeholder="Su contraseña">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>País</label>
+                                    @Html.DropDownListFor(model => model.country, new SelectList(ViewBag.CountryList), new { @class = "form-control" ,@placeholder="Elige tu país"})
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Cumpleaños</label>
+                                    @Html.EditorFor(model => model.birth, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Ej: 30-5-1994 ", @required = true } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Facción/Bando</label>
+                                    @Html.DropDownListFor(model => model.faction, new SelectList(ViewBag.FactionList), new { @class = "form-control", @placeholder = "Elige tu facción preferida" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" value="Registrar" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <!-- /REGISTER -->
+                <!-- WHY? -->
+                <div class="col-md-6">
+                    <br /> <br /><br />
+
+                    <div class="white-row">
+
+                        <h4>Regístrate con nosotros</h4>
+
+                        <p>Nuestro server incluye opciones como:</p>
+                        <ul class="list-icon check">
+                            <li>Buy, sell, and interact with other members.</li>
+                            <li>Save your favorite searches and get notified.</li>
+                            <li>Watch the status of up to 200 items.</li>
+                            <li>View your Atropos information from any computer in the world.</li>
+                            <li>Connect with the Atropos community.</li>
+                        </ul>
+
+                        <hr class="half-margins" />
+
+                        <p>
+                            ¿Ya tienes una cuenta?
+                            <a href="page-signin.html"><strong>Inicia sesión</strong></a>
+                        </p>
+                    </div>
+
+                </div>
+                <!-- /WHY? -->
+
+            </div>
+
+        </section>
+
+    </div>
+    <!-- /WRAPPER -->

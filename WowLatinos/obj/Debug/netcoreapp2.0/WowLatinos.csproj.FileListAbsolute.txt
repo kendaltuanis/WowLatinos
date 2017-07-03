@@ -1,0 +1,33 @@
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/x86/e_sqlite3.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/x64/e_sqlite3.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.deps.json
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.runtimeconfig.json
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.runtimeconfig.dev.json
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.csprojResolveAssemblyReference.cache
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.csproj.CoreCompileInputs.cache
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.AssemblyInfo.cs
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/DBAccess.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/HelpersSQL.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/DBAccess.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/HelpersSQL.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/libe_sqlite3.so
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.deps.json
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.runtimeconfig.json
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.runtimeconfig.dev.json
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.dll
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/WowLatinos.pdb
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/DBAccess.dll
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/HelpersSQL.dll
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/DBAccess.pdb
+/home/kendall/WowLatinos/WowLatinos/bin/Debug/netcoreapp2.0/HelpersSQL.pdb
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.csprojResolveAssemblyReference.cache
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.csproj.CoreCompileInputs.cache
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.AssemblyInfo.cs
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.dll
+/home/kendall/WowLatinos/WowLatinos/obj/Debug/netcoreapp2.0/WowLatinos.pdb
