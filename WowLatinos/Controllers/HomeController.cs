@@ -32,6 +32,13 @@ namespace WowLatinos.Controllers
             return View();
         }
 
+        public IActionResult HowToPlay()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+
 
         public IActionResult Error()
         {
