@@ -1,4 +1,10 @@
-﻿	<!-- WRAPPER -->
+﻿
+
+@{ 
+    List<List<string>> posts = ViewBag.PostList;
+    string url = "https://www.facebook.com/kendaltuaniss/posts/";
+}
+	<!-- WRAPPER -->
 <div id="wrapper">
 
 
@@ -208,6 +214,7 @@
     <!-- /WELCOME -->
     <!-- PARALLAX -->
 
+
     <div id="blog">
 
         <!-- PAGE TITLE -->
@@ -226,124 +233,65 @@
 
             <div class="blog-timeline">
 
-                <article class="timeline-item pull-left">
-                    <div class="item-date">
-                        29 <span>Jun</span>
-                    </div>
 
-                    <div class="item">
+                @{
+                    bool isLeft = true;
+                    DateTime date;
 
-                        <!-- article title -->
-                        <div class="item-title">
-                            <h2><a href="blog-single-sidebar-left.html">This is an Image Post</a></h2>
-                            <a href="blog.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Business</a>
-                            <a href="blog-single-sidebar-left.html#comments" class="scrollTo label label-default light"><i class="fa fa-comment-o"></i> 3 Comments</a>
-                            <span class="label label-default light">June 29, 2014</span>
-                        </div>
+                    for (int j = 0; j < posts[0].Count; j++)
+                    {
+                       
+                            IFormatProvider culture = new System.Globalization.CultureInfo("en-US", true);
+                            date = DateTime.Parse(posts[1][j], culture, System.Globalization.DateTimeStyles.AssumeLocal);
+                        
 
-                        <!-- image -->
-                        <figure>
-                            <img src="~/images/demo/blog.jpg" class="img-responsive" alt="img" />
-                        </figure>
+                            if (isLeft)
+                            {
+                            <article class="timeline-item pull-left">
+                               
+                                <div class="item-date">
+                                    @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
+                                </div>
 
-                        <!-- blog short preview -->
-                        <p>
-                            Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                        </p>
+                                <div class="item">
 
-                        <!-- LEER MÁS button -->
-                        <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+                                    <div class="fb-post" data-id="" data-href=@url@posts[0][j] data-width="500" data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <!-- LEER MÁS button -->
+                                    <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
 
-                    </div>
+                                </div>
 
-                </article>
+                            </article>
+                            isLeft = false;
+                        }
+                        else
+                        {
+                            <article class="timeline-item pull-right">
 
-                <article class="timeline-item pull-right">
-                    <div class="item-date">
-                        29 <span>Jun</span>
-                    </div>
+                                <div class="item-date">
+                                    @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
+                                </div>
+                                <div class="item">
 
-                    <div class="item">
+                                    <!-- article title -->
+                                    <div class="fb-post" data-id="" data-href=@url@posts[0][j] data-width="500" data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <!-- LEER MÁS button -->
+                                    <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
 
-                        <!-- article title -->
-                        <div class="item-title">
-                            <h2><a href="blog-single-sidebar-left.html">This is a Video Post</a></h2>
-                            <a href="blog.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Business</a>
-                            <a href="blog-single-sidebar-left.html#comments" class="scrollTo label label-default light"><i class="fa fa-comment-o"></i> 3 Comments</a>
-                            <span class="label label-default light">June 29, 2014</span>
-                        </div>
+                                </div>
 
-                        <!-- vido -->
-                        <iframe class="fitvids" src="https://player.vimeo.com/video/70984663" width="800" height="450"></iframe>
+                            </article>
+                            isLeft = true;
+                        }
 
-                        <!-- blog short preview -->
-                        <p>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        </p>
 
-                        <!-- LEER MÁS button -->
-                        <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+                    }
 
-                    </div>
 
-                </article>
+                }
 
-                <article class="timeline-item pull-left">
-                    <div class="item-date">
-                        29 <span>Jun</span>
-                    </div>
 
-                    <div class="item">
 
-                        <!-- article title -->
-                        <div class="item-title">
-                            <h2><a href="blog-single-sidebar-left.html">Blog Post With Text Only</a></h2>
-                            <a href="blog.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Business</a>
-                            <a href="blog-single-sidebar-left.html#comments" class="scrollTo label label-default light"><i class="fa fa-comment-o"></i> 3 Comments</a>
-                            <span class="label label-default light">June 29, 2014</span>
-                        </div>
-
-                        <!-- blog short preview -->
-                        <p>
-                            Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                        </p>
-
-                        <!-- LEER MÁS button -->
-                        <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
-
-                    </div>
-
-                </article>
-
-                <article class="timeline-item pull-right">
-                    <div class="item-date">
-                        29 <span>Jun</span>
-                    </div>
-
-                    <div class="item">
-
-                        <!-- article title -->
-                        <div class="item-title">
-                            <h2><a href="blog-single-sidebar-left.html">This is an Audio Post</a></h2>
-                            <a href="blog.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Business</a>
-                            <a href="blog-single-sidebar-left.html#comments" class="scrollTo label label-default light"><i class="fa fa-comment-o"></i> 3 Comments</a>
-                            <span class="label label-default light">September 12, 2014</span>
-                        </div>
-
-                        <!-- audio -->
-                        <iframe class="fullwidth" height="166" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/62974792&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=true"></iframe>
-
-                        <!-- blog short preview -->
-                        <p>
-                            Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Proin eget tortor risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-                        </p>
-
-                        <!-- LEER MÁS button -->
-                        <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
-
-                    </div>
-
-                </article>
 
             </div>
 
@@ -358,6 +306,3 @@
 
     </div>
 </div>
-
-
-

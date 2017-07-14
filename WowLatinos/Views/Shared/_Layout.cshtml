@@ -42,6 +42,26 @@
 </head>
 <body>
 
+    <div id="fb-root"></div>
+    <script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '657015527829619',
+            xfbml: true,
+            version: 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <button  id="myBtn" onclick="topFunction()"> <i class="glyphicon glyphicon-circle-arrow-up fsize40" style="color:white"> </i></button>
 
     <!-- Modal -->
@@ -70,8 +90,8 @@
     @{ 
         Boolean is_register = false;
     }
-
-
+    
+ 
     <!-- Top Bar -->
     <header id="topHead">
         <div class="container">
@@ -87,6 +107,29 @@
             <!-- SIGN IN -->
             <div class="pull-right nav signin-dd">
 
+                    <script>
+                        function publicar() {
+                            FB.ui({
+                                method: 'share',
+                                href: 'https://developers.facebook.com/docs/',
+                                action_properties: JSON.stringify({
+                                    object: 'https://www.facebook.com/extintoresuniversales/',
+                                })
+                            }, function (response) { 
+                                if (response == null) {
+                                    console.log('test1');
+                                }
+                                else {
+                                    console.log(response.post_id);
+                                }  
+
+                            });
+                        }
+
+                    </script>
+
+
+
                 @{ <script>
                     function checkLoginState() {
                         FB.getLoginStatus(function (response) {
@@ -98,6 +141,7 @@
                         FB.logout(function (response) {
                             // user is now logged out
                         });
+                    }
                 </script>
                 }
 
@@ -169,8 +213,8 @@
 
                     <hr />
 
-                    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-                    <a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    </fb:login-button><a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
                     <a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Conectar con Google</a>
 
                     <p class="bottom-create-account">
@@ -187,7 +231,7 @@
             <!-- LINKS -->
             <div class="pull-right nav hidden-xs">
                 <a href="/Home/Contact"><i class="fa fa-angle-right"></i> Contacto</a>
-                <a href="#"><i class="fa fa-angle-right"></i> Proyectos</a>
+                <a href="#" onclick="publicar()"><i class="fa fa-angle-right"></i> Proyectos</a>
             </div>
             <!-- /LINKS -->
 

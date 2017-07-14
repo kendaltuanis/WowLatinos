@@ -71,6 +71,31 @@ namespace DBAccess
             return dic;
 
         }
+
+        public override List<string> SqlQueryList(string sql, IDictionary<string, object> parameters)
+        {
+            MySqlDataReader resultSet = null;
+            List<string> list = new List<string>();
+            try
+            {
+                MySqlCommand cmd = this.AddParameters(sql, parameters);
+                resultSet = cmd.ExecuteReader();
+
+                while (resultSet.Read())
+                {
+                    for (int i = 0; i < resultSet.FieldCount; i++)
+                    {
+                        list.Add(resultSet.GetString(i));
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                this.ProcessException(e);
+            }
+            return list;
+
+        }
         public override object SqlScalar(string sql, IDictionary<string, object> parameters)
         {
             this.CleanStatus();

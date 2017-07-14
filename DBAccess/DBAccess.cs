@@ -16,6 +16,7 @@ namespace DBAccess
         public abstract void Connect();
         public abstract void Disconnect();
         public abstract Dictionary<string, string> SqlQuery(string sql, IDictionary<string, Object> parameters);
+        public abstract List<string> SqlQueryList(string sql, IDictionary<string, Object> parameters);
         public abstract object SqlScalar(string sql, IDictionary<string, Object> parameters);
         public abstract void SqlStatement(string sql, IDictionary<string, Object> parameters);
         public abstract void BeginTransaction();

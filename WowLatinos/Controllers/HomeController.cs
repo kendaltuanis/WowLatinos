@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WowLatinos.Models;
 using Microsoft.AspNetCore.Http;
+using WowLatinos.Models.BD;
 
 namespace WowLatinos.Controllers
 {
@@ -13,8 +14,10 @@ namespace WowLatinos.Controllers
     {
         const string SessionKeyName = "_id";
         const string SessionKeyUser = "_username";
+
         public IActionResult Index()
         {
+            ViewBag.PostList = new Post().Select();
             return View();
         }
 
@@ -35,6 +38,7 @@ namespace WowLatinos.Controllers
         public IActionResult HowToPlay()
         {
             ViewData["Message"] = "Your contact page.";
+
 
             return View();
         }
