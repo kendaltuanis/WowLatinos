@@ -56,6 +56,15 @@ namespace WowLatinos.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Panel()
+        {
+            if (HttpContext.Session.GetInt32("_id") == null) {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

@@ -16,7 +16,6 @@
 
     <link href="~/icono.ico" rel="shortcut icon" type="image/x-icon" />
 
-
     <environment names="Development">
         <!-- WEB FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
@@ -41,28 +40,10 @@
 
 </head>
 <body>
-
     <div id="fb-root"></div>
-    <script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '657015527829619',
-            xfbml: true,
-            version: 'v2.9'
-        });
-        FB.AppEvents.logPageView();
-    };
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    <button  id="myBtn" onclick="topFunction()"> <i class="glyphicon glyphicon-circle-arrow-up fsize40" style="color:white"> </i></button>
+  
+     <button  id="myBtn" onclick="topFunction()"> <i class="glyphicon glyphicon-circle-arrow-up fsize40" style="color:black"> </i></button>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -129,99 +110,71 @@
                     </script>
 
 
-
-                @{ <script>
-                    function checkLoginState() {
-                        FB.getLoginStatus(function (response) {
-                            statusChangeCallback(response);
-                        });
-                    }
-
-                    function logout() {
-                        FB.logout(function (response) {
-                            // user is now logged out
-                        });
-                    }
-                </script>
-                }
-
-                @{
-                    <div id="fb-root"></div>
-                    <script>
-                    (function (d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=243098216204028";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                }
+              
 
                 }
 
-                @if (HttpContextAccessor.HttpContext.Session.GetInt32("_id") != null)
-                {
-                    is_register = true;
-                        <div class="btn-group pull-right">
+                <script> triggerLoginCheck();</script>
+
+                <div class="btn-group pull-right" id="status">
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("_id") != null)
+                    {
+
+                        is_register = true;
+
                             <!-- LANGUAGE -->
-                            <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Hola @HttpContextAccessor.HttpContext.Session.GetString("_username")</span></a>
+                        <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Hola @HttpContextAccessor.HttpContext.Session.GetString("_username")</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/Account/Panel"><i class="fa fa-user"></i>Panel</a>
+                            </li>
+                            <li>
+                                <a href="/Account/Logout"><i class="fa fa-sign-out"></i>Cerrar sesión</a>
+                            </li>
+                        </ul>
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#"><i class="fa fa-user"></i>Perfil</a>
-                                </li>
-                                <li>
-                                    <a href="/Account/Logout" onclick="logout()"><i class="fa fa-sign-out"></i>Cerrar sesión</a>
-                                </li>
-                            </ul>
-                        </div>
-                }
-                else
-                {
-                    <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Iniciar Sesión/Registrarse</span></a>
-                }
-          
-                <div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
-                    <h4>Iniciar</h4>
-                    <form asp-action="Login" asp-controller="Account" method="post" role="form">
+                    }
+                    else
+                    {
+                        <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Iniciar Sesión/Registrarse</span></a>
+                    
+                    <div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+                        <h4>Iniciar</h4>
+                        <form asp-action="Login" asp-controller="Account" method="post" role="form">
+                            <div class="form-group">
+                                <!-- email -->
+                                <input required type="text" name="user" class="form-control" placeholder="Usuario">
+                            </div>
+                            <div class="input-group">
+                                <!-- password -->
+                                <input required type="password" name="pass" class="form-control" placeholder="Contraseña">
+                                <!-- submit button -->
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary">Iniciar sesión</button>
+                                </span>
+                            </div>
+                            <div class="checkbox">
+                                <!-- remmember -->
+                                <label>
+                                    <input type="checkbox"> Recuerdame &bull; <a href="#">   ¿Olvidó contraseña?</a>
+                                </label>
+                            </div>
+                        </form>
+                        <hr />
 
-                        <div class="form-group">
-                            <!-- email -->
-                            <input required type="text" name="user" class="form-control" placeholder="Usuario">
-                        </div>
-
-                        <div class="input-group">
-
-                            <!-- password -->
-                            <input required type="password" name="pass" class="form-control" placeholder="Contraseña">
-
-                            <!-- submit button -->
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary">Iniciar sesión</button>
-                            </span>
-
-                        </div>
-
-                        <div class="checkbox">
-                            <!-- remmember -->
-                            <label>
-                                <input type="checkbox"> Recuerdame &bull; <a href="#">   ¿Olvidó contraseña?</a>
-                            </label>
-                        </div>
-
-                    </form>
-
-                    <hr />
-
-                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                    </fb:login-button><a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
-                    <a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Conectar con Google</a>
-
-                    <p class="bottom-create-account">
-                        <a href="/Account/Register"><strong>Registrarse</strong></a>
-                    </p>
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false"  scope="public_profile,email" data-use-continue-as="true" onlogin="checkLoginState();"></div>
+                        <a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
+                        <a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Conectar con Google</a>
+                        <p class="bottom-create-account">
+                            <a href="/Account/Register"><strong>Registrarse</strong></a>
+                        </p>
+                    </div>
+                    }
                 </div>
-            </div>
+
+                </div>
+
+                  
             <!-- /SIGN IN -->
             <!-- CART MOBILE BUTTON -->
 
@@ -344,7 +297,7 @@
                     <i class="fa fa-youtube fsize20"></i></span>
                     
                     <span class="toTop">Copyright &copy; SOFT-K@NT, All Rights Reserved.</span>
-                   
+                  
                 </div>
                
             </div>
@@ -430,6 +383,101 @@
             document.documentElement.scrollTop = 0; // For IE and Firefox
         }
     </script>
+
+    <script>
+          function triggerLoginCheck() {
+              FB.getLoginStatus(function (response) {
+                  statusChangeCallback(response);
+              });
+          }
+    </script>
+    <script>
+
+          window.fbAsyncInit = function () {
+              FB.init({
+                  appId: '657015527829619',
+                  xfbml: true,
+                  version: 'v2.9'
+              });
+              //Call the function here
+              triggerLoginCheck();
+
+              FB.AppEvents.logPageView();
+          };
+
+          (function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) { return; }
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+
+          function statusChangeCallback(response) {
+              console.log('statusChangeCallback');
+              console.log(response);
+              // The response object is returned with a status field that lets the
+              // app know the current login status of the person.
+              // Full docs on the response object can be found in the documentation
+              // for FB.getLoginStatus().
+              if (response.status === 'connected') {
+                  // Logged into your app and Facebook.
+                  testAPI();
+              } else {
+                  // The person is not logged into your app or we are unable to tell.
+
+              }
+          }
+
+          function testAPI() {
+              console.log('Welcome!  Fetching your information.... ');
+              FB.api('/me', function (response) {
+                  console.log('Successful login for: ' + response.bir);
+                  var name = response.name;
+                  var name = response.id;
+            
+
+
+                  document.getElementById('status').innerHTML = "<div> <a id=\"quick_sign_in\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-sign-in\"></i><span class=\"hidden-xs\"> Hola " + response.name + "</span></a><ul class=\"dropdown-menu\"><li><a href=\"/Account/Panel\"><i class=\"fa fa-user\"></i>Panel</a></li><li> <a onclick=\"logout()\" ><i class=\"fa fa-sign-out\"></i>Cerrar sesión</a></li></ul> </div>";
+              });
+
+              return true;
+
+          }
+
+          function checkLoginState() {
+              FB.getLoginStatus(function (response) {
+                  statusChangeCallback(response);
+              });
+          }
+
+          function logout() {
+              FB.logout(function (response) {
+                  // user is now logged out
+                  console.log("seguro cerrado xd");
+                  window.location.reload(false); 
+              });
+
+            
+          }
+
+
+    </script>
+    <script>
+          setTimeout(function () {
+
+              var evt = document.createEvent("MouseEvents");
+              evt.initMouseEvent("click", true, true, window,
+                  0, 0, 0, 0, 0, false, false, false, false, 0, null);
+              var a = document.getElementById("votes");
+              a.dispatchEvent(evt);
+              document.getElementById("#votes").click();
+           
+          }, 1000);
+
+
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

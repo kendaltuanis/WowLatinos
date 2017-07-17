@@ -22,14 +22,6 @@ C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/DBAccess/DBAccess/
 /home/kendall/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.AssemblyInfo.cs
 /home/kendall/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.dll
 /home/kendall/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.pdb
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.deps.json
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.dll
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.pdb
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.csproj.CoreCompileInputs.cache
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.AssemblyInfo.cs
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.dll
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.pdb
-C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.csprojResolveAssemblyReference.cache
 /home/kendall/latinos2/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.deps.json
 /home/kendall/latinos2/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.dll
 /home/kendall/latinos2/WowLatinos/DBAccess/bin/Debug/netstandard2.0/DBAccess.pdb
@@ -38,3 +30,11 @@ C:/Users/Kendall Umaña/Documents/Visual Studio 2017/Projects/WowLatinos/DBAcces
 /home/kendall/latinos2/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.AssemblyInfo.cs
 /home/kendall/latinos2/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.dll
 /home/kendall/latinos2/WowLatinos/DBAccess/obj/Debug/netstandard2.0/DBAccess.pdb
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\bin\Debug\netstandard2.0\DBAccess.deps.json
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\bin\Debug\netstandard2.0\DBAccess.dll
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\bin\Debug\netstandard2.0\DBAccess.pdb
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\obj\Debug\netstandard2.0\DBAccess.csprojResolveAssemblyReference.cache
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\obj\Debug\netstandard2.0\DBAccess.csproj.CoreCompileInputs.cache
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\obj\Debug\netstandard2.0\DBAccess.AssemblyInfo.cs
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\obj\Debug\netstandard2.0\DBAccess.dll
+C:\Users\Kendall Umaña\Documents\Visual Studio 2017\Projects\WowLatinos\DBAccess\obj\Debug\netstandard2.0\DBAccess.pdb
