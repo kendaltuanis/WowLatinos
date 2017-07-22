@@ -21,23 +21,23 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label>Nombre</label>
-                                    <input type="text" value="" class="form-control" placeholder="Su nombre">
-                                </div>
+                                    @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Su nombre", @required = true } })
+                                    </div>
                                 <div class="col-md-6">
-                                    <label>Usuario</label>
-                                    @Html.EditorFor(model => model.user, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Su usuario", @required = true } })
+                                    <label>Apellidos</label>
+                                    @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Sus apellidos", @required = true } })
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label>Correo</label>
-                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "email", @class = "form-control", @placeholder = "Su correo electrónico", @required = true } })
+                                    <label>Usuario</label>
+                                    @Html.EditorFor(model => model.user, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Su usuario", @required = true } })
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Teléfono</label>
-                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @type = "tel", @class = "form-control", @placeholder = "Su celular", @required = true } })
+                                    <label>Correo</label>
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "email", @class = "form-control", @placeholder = "Su correo electrónico", @required = true } })
                                 </div>
                             </div>
                         </div>
@@ -55,22 +55,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>País</label>
-                                    @Html.DropDownListFor(model => model.country, new SelectList(ViewBag.CountryList), new { @class = "form-control" ,@placeholder="Elige tu país"})
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Cumpleaños</label>
-                                    @Html.EditorFor(model => model.birth, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Ej: 30-5-1994 ", @required = true } })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>Facción/Bando</label>
-                                    @Html.DropDownListFor(model => model.faction, new SelectList(ViewBag.FactionList), new { @class = "form-control", @placeholder = "Elige tu facción preferida" })
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="row">

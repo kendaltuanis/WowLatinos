@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WowLatinos</title>
 
+   
     <!-- mobile settings -->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
     <meta name="theme-color" content="#0489B1" />
@@ -26,15 +27,13 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/css/core_css.css" />
         <link rel="stylesheet" href="~/css/theme_css_dark.css" />
+         <link rel="stylesheet" href="~/css/site.css" />
         <!-- REVOLUTION SLIDER -->
         <link href="~/plugins/slider.revolution.v4/css/settings.css" rel="stylesheet" type="text/css" />
     </environment>
 
     <environment include="Development">
         <script src="~/plugins/modernizr.min.js"></script>
-
-
-
     </environment>
   
 
@@ -108,13 +107,8 @@
                         }
 
                     </script>
-
-
               
-
                 }
-
-                <script> triggerLoginCheck();</script>
 
                 <div class="btn-group pull-right" id="status">
                     @if (HttpContextAccessor.HttpContext.Session.GetInt32("_id") != null)
@@ -162,7 +156,7 @@
                         </form>
                         <hr />
 
-                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false"  scope="public_profile,email" data-use-continue-as="true" onlogin="checkLoginState();"></div>
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email" data-use-continue-as="true" onlogin="FirstTimeLogin();"></div>
                         <a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
                         <a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Conectar con Google</a>
                         <p class="bottom-create-account">
@@ -347,6 +341,10 @@
         <script type="text/javascript" src="~/plugins/jquery.appear.js"></script>
         <script type="text/javascript" src="~/plugins/jquery.isotope.js"></script>
         <script type="text/javascript" src="~/plugins/masonry.js"></script>
+        <script type="text/javascript" src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+
+        <script src="~/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script>var $j = jQuery.noConflict(true);</script>
 
         <script type="text/javascript" src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="~/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
@@ -364,6 +362,7 @@
         <script type="text/javascript" src="~/js/slider_revolution.js"></script>
 
         <script type="text/javascript" src="~/js/scripts.js"></script>
+        <script>$('#container').isotope({ filter: '.init' });</script>
 
     </environment>
     <script>
@@ -384,18 +383,62 @@
         }
     </script>
 
+
+
     <script>
-          function triggerLoginCheck() {
-              FB.getLoginStatus(function (response) {
-                  statusChangeCallback(response);
+        
+
+           function triggerLoginCheck() {
+               FB.getLoginStatus(function (response) {
+                   if(response.status=='connected'){        
+                        FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) {
+
+                        document.getElementById('status').innerHTML = "<div> <a id=\"quick_sign_in\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-sign-in\"></i><span class=\"hidden-xs\"> Hola segundo" + user.first_name + "</span></a><ul class=\"dropdown-menu\"><li><a href=\"/Account/Panel\"><i class=\"fa fa-user\"></i>Panel</a></li><li> <a onclick=\"logout()\" ><i class=\"fa fa-sign-out\"></i>Cerrar sesión</a></li></ul> </div>";
+             
+                        });
+
+                            
+                   } 
+
+
               });
+
+            
           }
+
+          function FirstTimeLogin(){
+            FB.login(function(response) {
+            if (response.status === 'connected') {
+                
+FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) {
+                        alert(user.first_name)
+                        
+                        document.getElementById('status').innerHTML = "<div> <a id=\"quick_sign_in\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-sign-in\"></i><span class=\"hidden-xs\"> Hola primero " + user.first_name + "</span></a><ul class=\"dropdown-menu\"><li><a href=\"/Account/Panel\"><i class=\"fa fa-user\"></i>Panel</a></li><li> <a onclick=\"logout()\" ><i class=\"fa fa-sign-out\"></i>Cerrar sesión</a></li></ul> </div>";
+             
+
+                        $j.ajax({
+                        url: '@Url.Action("FirstTime", "Account")',
+                        data: {id:user.id,first_name:user.first_name,last_name:user.last_name,email:user.email},
+                        type: 'POST' //POST if you want to save, GET if you want to fetch data from server
+                        });
+
+                        });
+
+            } else {
+                // The person is not logged into this app or we are unable to tell. 
+            }
+            });
+
+          }
+
     </script>
     <script>
 
+    
+
           window.fbAsyncInit = function () {
               FB.init({
-                  appId: '657015527829619',
+                  appId: '592884567767090',
                   xfbml: true,
                   version: 'v2.9'
               });
@@ -413,43 +456,10 @@
               fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));
 
-          function statusChangeCallback(response) {
-              console.log('statusChangeCallback');
-              console.log(response);
-              // The response object is returned with a status field that lets the
-              // app know the current login status of the person.
-              // Full docs on the response object can be found in the documentation
-              // for FB.getLoginStatus().
-              if (response.status === 'connected') {
-                  // Logged into your app and Facebook.
-                  testAPI();
-              } else {
-                  // The person is not logged into your app or we are unable to tell.
+   
+     
 
-              }
-          }
-
-          function testAPI() {
-              console.log('Welcome!  Fetching your information.... ');
-              FB.api('/me', function (response) {
-                  console.log('Successful login for: ' + response.bir);
-                  var name = response.name;
-                  var name = response.id;
-            
-
-
-                  document.getElementById('status').innerHTML = "<div> <a id=\"quick_sign_in\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-sign-in\"></i><span class=\"hidden-xs\"> Hola " + response.name + "</span></a><ul class=\"dropdown-menu\"><li><a href=\"/Account/Panel\"><i class=\"fa fa-user\"></i>Panel</a></li><li> <a onclick=\"logout()\" ><i class=\"fa fa-sign-out\"></i>Cerrar sesión</a></li></ul> </div>";
-              });
-
-              return true;
-
-          }
-
-          function checkLoginState() {
-              FB.getLoginStatus(function (response) {
-                  statusChangeCallback(response);
-              });
-          }
+    
 
           function logout() {
               FB.logout(function (response) {
@@ -474,7 +484,6 @@
               document.getElementById("#votes").click();
            
           }, 1000);
-
 
     </script>
 

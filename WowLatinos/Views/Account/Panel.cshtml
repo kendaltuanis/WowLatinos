@@ -16,44 +16,60 @@
     <section class="container">
 
 
-        <label class="small_thin_grey"><span class="text-info">Creación de la cuenta: </span>25/2/2016</label><br />
+        <div class="hidden-xs">
+             <label class="small_thin_grey"><span class="text-info">Creación de la cuenta: </span>25/2/2016</label><br />
         <label class="small_thin_grey"><span class="text-info">Estado de la cuenta: </span>Activo</label>
 
+        </div>
+       
 
+        <ul class="nav nav-pills" style="margin-bottom: 20px;margin-top: 10px;">
+           <li class="active" style="background-image: avatar.png ">
+        <a  href="#1a" data-toggle="tab" ><b>Cuenta</b></a>
+			</li>
+			<li><a href="#2a" data-toggle="tab"><b>Personajes</b></a>
+			</li>
+			<li><a href="#3a" data-toggle="tab"><b>Recluta a un amigo</b></a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab"><b>Personalizar</b></a>
+			</li></ul>
 
-        <ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter" data-plugin-options='{"useHash": false}'>
-            <li data-option-value=".account"><a href="#" id="account">Mi cuenta</a></li>
-            <li data-option-value=".character"><a href="#">Personajes</a></li>
-            <li data-option-value=".recruit"><a href="#">Recluta a un amigo<span class="badge" style="font-size:8px">Recompensa</span></a></li>
-            <li data-option-value=".votes"><a id="votes" href="#">Votos</a></li>
-            <li data-option-value=".personalize"><a href="#">Personalizar personaje<span class="badge" style="font-size:8px">Cambios</span></a></li>
-        </ul>
-
-
-        <div class="row">
-
-            <ul class="sort-destination isotope" data-sort-id="isotope-list">
-
-                <li class="isotope-item col-sm-12 col-md-12 account" id="account">
-                    <!-- item 1 -->
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <h4 class="text-center">Datos personales</h4><br />
-                        <div class="input-group">
-                            <span class="input-group-addon">Usuario</span>
-                            <input id="msg" type="text" class="form-control">
-                        </div><br />
+        <div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1a">
+                    <div class="col-xs-12 col-sm-4 col-md-4 color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-user"></i>
+							</div>
                         <div class="input-group">
                             <span class="input-group-addon">Nombre</span>
                             <input id="msg" type="text" class="form-control">
                         </div><br />
                         <div class="input-group">
-                            <span class="input-group-addon">Correo</span>
-                            <input id="msg" type="email" value="kendaltuanis@hotmail.com" class="form-control" readonly>
-                        </div>
+                            <span class="input-group-addon">Apellidos</span>
+                            <input id="msg" type="text" class="form-control">
+                        </div><br />
+                        <div class="input-group">
+                            <span class="input-group-addon">País</span>
+                            <input id="msg" type="text" value="Costa Rica" class="form-control">
+                        </div><br />
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <br class="hidden-lg hidden-md hidden-sm" />
-                        <h4 class="text-center">Puntos</h4><br />
+                                <div class="col-xs-12 col-sm-4 col-md-offset-1 col-md-3 color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-gamepad"></i>
+							</div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Usuario</span>
+                            <input id="msg" type="text" class="form-control" readonly>
+                        </div><br />
+                        <div class="input-group">
+                            <span class="input-group-addon">Correo</span>
+                            <input id="msg" type="email" class="form-control" readonly>
+                        </div><br />
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1 color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-info-circle"></i>
+							</div>
                         <div class="input-group">
                             <span class="input-group-addon">Puntos de votación</span>
                             <input id="msg" type="text" class="form-control" readonly>
@@ -63,12 +79,12 @@
                             <input id="msg" type="text" class="form-control" readonly>
                         </div><br />
                     </div>
-                </li>
-
-                <li class="isotope-item character col-sm-12 col-md-12">
-                    <!-- item 1 -->
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <h4 class="text-center">Personajes</h4><br />
+				</div>
+             <div class="tab-pane" id="2a">
+                                    <div class="col-xs-12 col-sm-6 col-md-4 color-panel">
+                         <div class="divider"><!-- divider -->
+								<i class="fa fa-users"></i>
+							</div>
                         <select class="form-control pointer">
                             <option value="" selected="selected">Shahak</option>
                             <option value="">Kahahs</option>
@@ -77,39 +93,39 @@
                         <label class="small_thin_grey text-center"><span class="text-info text-center">Última conexión:</span> 12/02/2016</label><br />
                         <label class="small_thin_grey text-center"><span class="text-info text-center">Nivel:</span> 80</label><br />
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-8">
-                        <br class="hidden-lg hidden-md hidden-sm"/>
-                        <h4 class="text-center">Últimos logros obtenidos</h4><br />
+                    <div class="col-xs-12 col-sm-6 col-md-8 color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-trophy"></i>
+							</div>
 
                     </div>
-                </li>
-
-                <li class="isotope-item col-sm-12 col-md-12 recruit">
-                    <!-- item 2 -->
-                    <div class="col-xs-12 col-sm-6 col-md-7">
-                        <h4 class="text-center">Copia la dirección</h4><br />
+            
+            </div>
+        <div class="tab-pane" id="3a">
+                                <div class="col-xs-12 col-sm-6 col-md-7  color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-copy"></i>
+							</div>
                         <input class="form-control" value="http://www.wowlatinos.net/register?r=4390"/><br />
                         <label class="text-info"> Copia este link y dácelo a tus amigos. Con esto podrás recibir recompensas como:</label><br />
                         <label class="text-center">* 5 puntos de donación (por cada nuevo amigo).</label><br />
-                        <label class="text-center">* 2 piezas de leveo a escoger.</label><br />
+                        <label class="text-center">* 2 piezas de leveo a escoger.</label><br /><br /><br />
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-5">
-                        <img src="~/images/recruit_friend.jpg" width="100%"  height="250px"/>
+                    <div class="col-xs-12 col-sm-6 col-md-5  color-panel">
+                         <div class="divider"><!-- divider -->
+								<i class="fa fa-handshake-o"></i>
+							</div>
+                        <img src="~/images/recruit_friend.jpg" width="100%"  height="263px"/>
                     </div>
-                </li>
+         
+         </div>
 
-                <li class="isotope-item col-sm-12 col-md-12 votes">
-                    <!-- item 3 -->
-                    <div class="col-sm-12">                       
-                       
-                    </div>
-                </li>
 
-                <li class="isotope-item col-sm-12 col-md-12 personalize">
-                    <!-- item 4 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <h4 class="text-center">Cambio de:</h4><br />
-
+          <div class="tab-pane" id="4a">
+          <div class="col-xs-12 col-sm-12 col-md-12 color-panel">
+                        <div class="divider"><!-- divider -->
+								<i class="fa fa-copy"></i>
+							</div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -124,13 +140,15 @@
                         </div>
                         <label class="text-center"> Estos cambios se realizan dentro del juego. Acá solamente se solicitan. *CERRAR EL JUEGO CUANDO SE REALIZAN*</label><br />
                     </div>
-                </li>
-
-
-
-            </ul>
-
-        </div><!-- /.masonry-container -->
+            
+            </div>
+			
+            
+            </div>
+ 
+ 
+  
+  </div>
         <!-- CALLOUT -->
         <div class="bs-callout text-center nomargin-bottom">
             <div class="col-md-12">

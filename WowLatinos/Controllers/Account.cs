@@ -58,9 +58,9 @@ namespace WowLatinos.Controllers
 
         public IActionResult Panel()
         {
-            if (HttpContext.Session.GetInt32("_id") == null) {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (HttpContext.Session.GetInt32("_id") == null) {
+              //  return RedirectToAction("Index", "Home");
+            //}
 
             return View();
         }
@@ -72,6 +72,14 @@ namespace WowLatinos.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult FirstTime(string id,string first_name,string last_name,string email){
+
+          
+           return RedirectToAction("Home");
+        }
+
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
@@ -82,7 +90,7 @@ namespace WowLatinos.Controllers
             CultureInfo[] CInfoList = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
             foreach (CultureInfo CInfo in CInfoList)
             {
-                RegionInfo R = new RegionInfo(CInfo.LCID);
+                RegionInfo R = new RegionInfo("en-US");
                 if (!(CountryList.Contains(R.EnglishName)))
                 {
                     CountryList.Add(R.EnglishName);

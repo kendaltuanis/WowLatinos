@@ -11,6 +11,8 @@ namespace WowLatinos.Models.BD
 {
     public class Account
     {
+        public string first_name { get; set; }
+        public string last_name { get; set; }
         public string user { get; set; }
         public string pass { get; set; }
         public string email { get; set; }
@@ -52,10 +54,8 @@ namespace WowLatinos.Models.BD
 
             data = new Dictionary<string, object>();
             data.Add("id_account", s);
-            data.Add("phone", phone);
-            data.Add("country", country);
-            data.Add("birth", birth);
-            data.Add("faction", Faction());
+            data.Add("first_name", first_name);
+            data.Add("last_name", last_name);
 
             sql = new SqlHelper(TABLE_DETAILS_NAME);
             Startup.connection.SqlStatement(sql.InsertSql(data.Select(i=> i.Key).ToArray()),data);
