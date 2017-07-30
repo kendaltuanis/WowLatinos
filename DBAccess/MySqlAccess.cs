@@ -60,13 +60,18 @@ namespace DBAccess
                 while (resultSet.Read())
                 {
                     for (int i = 0; i < resultSet.FieldCount; i++) {
-                        dic.Add(resultSet.GetName(i), resultSet.GetString(i));
+                        object s = resultSet.GetValue(i);
+                        dic.Add(resultSet.GetName(i), (s==null) ? "" : s.ToString());
                     }
                 }
             }
             catch (MySqlException e)
             {
                 this.ProcessException(e);
+            }
+            finally
+            {
+               resultSet.Close();
             }
             return dic;
 
@@ -92,6 +97,10 @@ namespace DBAccess
             catch (MySqlException e)
             {
                 this.ProcessException(e);
+            }
+            finally
+            {
+               resultSet.Close();
             }
             return list;
 

@@ -11,3 +11,27 @@
  background-color:lightslategray;
 
 }
+
+.full{
+    width: 100%;
+    position: relative;
+}
+
+/* Esto es lo del slider, para que se vean los puntitos xd*/
+
+@media screen and (min-width: 300) {
+
+        .sl-top{
+        margin-top:0;
+        }
+    }
+
+ @media screen and (min-width: 990) {
+
+        .sl-top{
+        margin-top:-35;
+        }
+    }
+    
+
+   

@@ -23,7 +23,6 @@
 
     </environment>
 
-
     <environment names="Development">
         <link rel="stylesheet" href="~/css/core_css.css" />
         <link rel="stylesheet" href="~/css/theme_css_dark.css" />
@@ -108,8 +107,7 @@
 
                     </script>
               
-                }
-
+                
                 <div class="btn-group pull-right" id="status">
                     @if (HttpContextAccessor.HttpContext.Session.GetInt32("_id") != null)
                     {
@@ -123,14 +121,13 @@
                                 <a href="/Account/Panel"><i class="fa fa-user"></i>Panel</a>
                             </li>
                             <li>
-                                <a href="/Account/Logout"><i class="fa fa-sign-out"></i>Cerrar sesión</a>
+                                <a onclick="logout();" ><i class="fa fa-sign-out"></i>Cerrar sesión</a>
                             </li>
                         </ul>
 
-                    }
-                    else
+                    }else
                     {
-                        <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Iniciar Sesión/Registrarse</span></a>
+                        <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs hidden-sm"> Iniciar Sesión/Registrarse</span></a>
                     
                     <div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
                         <h4>Iniciar</h4>
@@ -277,7 +274,6 @@
     <!-- /TOP NAV -->
 
         @RenderBody()
-        <hr />
         <!-- FOOTER -->
         <footer>
 
@@ -407,19 +403,19 @@
           }
 
           function FirstTimeLogin(){
-            FB.login(function(response) {
+            FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 
-FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) {
-                        alert(user.first_name)
-                        
-                        document.getElementById('status').innerHTML = "<div> <a id=\"quick_sign_in\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-sign-in\"></i><span class=\"hidden-xs\"> Hola primero " + user.first_name + "</span></a><ul class=\"dropdown-menu\"><li><a href=\"/Account/Panel\"><i class=\"fa fa-user\"></i>Panel</a></li><li> <a onclick=\"logout()\" ><i class=\"fa fa-sign-out\"></i>Cerrar sesión</a></li></ul> </div>";
-             
+                        FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) {
+                     
 
                         $j.ajax({
                         url: '@Url.Action("FirstTime", "Account")',
                         data: {id:user.id,first_name:user.first_name,last_name:user.last_name,email:user.email},
-                        type: 'POST' //POST if you want to save, GET if you want to fetch data from server
+                        type: 'POST' ,//POST if you want to save, GET if you want to fetch data from server
+                        success: function (data) {
+                                 window.location.href = '@Url.Action("Panel", "Account")';                               
+                        }
                         });
 
                         });
@@ -443,7 +439,7 @@ FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) 
                   version: 'v2.9'
               });
               //Call the function here
-              triggerLoginCheck();
+         
 
               FB.AppEvents.logPageView();
           };
@@ -464,11 +460,10 @@ FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) 
           function logout() {
               FB.logout(function (response) {
                   // user is now logged out
-                  console.log("seguro cerrado xd");
-                  window.location.reload(false); 
-              });
-
-            
+                  console.log("seguro cerrado xd"); 
+              });   
+            document.location.href="/Account/Logout"; 
+             document.location.href="/";         
           }
 
 

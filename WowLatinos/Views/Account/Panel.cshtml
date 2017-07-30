@@ -1,4 +1,29 @@
-﻿		<!-- WRAPPER -->
+﻿    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+     @using Microsoft.AspNetCore.Mvc;
+    @using Microsoft.AspNetCore.Http;
+
+    
+     @{ 
+         Boolean user = false;
+         Boolean pass = false;
+         Boolean email = false;
+    }
+    
+    @if(HttpContextAccessor.HttpContext.Session.GetInt32("_changeU") ==1){
+        user=true;
+    }
+     @if(HttpContextAccessor.HttpContext.Session.GetInt32("_changeP") ==1){
+        pass=true;
+        if(user){
+            <script>alert("Te recomendamos cambiar tu usuario y contraseña, ya que fue creada por Facebook")</script>
+        }
+    }
+     @if(HttpContextAccessor.HttpContext.Session.GetInt32("_changeE") ==1){
+        email=true;
+    }
+        
+    
+		<!-- WRAPPER -->
 <div id="wrapper">
 
     <!-- PAGE TITLE -->
@@ -15,72 +40,97 @@
 
     <section class="container">
 
-
-        <div class="hidden-xs">
+        <div class="row">
+        <div class="hidden-xs col-sm-4">
              <label class="small_thin_grey"><span class="text-info">Creación de la cuenta: </span>25/2/2016</label><br />
         <label class="small_thin_grey"><span class="text-info">Estado de la cuenta: </span>Activo</label>
-
         </div>
-       
+        <div class="col-sm-4 col-sm-offset-4">
+             <label class="small_thin_grey"><span class="text-info">Puntos de votación: </span>25</label><br />
+        <label class="small_thin_grey"><span class="text-info">Puntos de donación: </span>2</label>
+        </div>
+       </div>
 
         <ul class="nav nav-pills" style="margin-bottom: 20px;margin-top: 10px;">
            <li class="active" style="background-image: avatar.png ">
         <a  href="#1a" data-toggle="tab" ><b>Cuenta</b></a>
 			</li>
-			<li><a href="#2a" data-toggle="tab"><b>Personajes</b></a>
+            <li><a href="#2a" data-toggle="tab"><b>Datos personales</b></a>
 			</li>
-			<li><a href="#3a" data-toggle="tab"><b>Recluta a un amigo</b></a>
+			<li><a href="#3a" data-toggle="tab"><b>Personajes</b></a>
 			</li>
-  		<li><a href="#4a" data-toggle="tab"><b>Personalizar</b></a>
+			<li><a href="#4a" data-toggle="tab"><b>Recluta a un amigo</b></a>
+			</li>
+  		<li><a href="#5a" data-toggle="tab"><b>Personalizar</b></a>
 			</li></ul>
 
         <div class="tab-content clearfix">
 			  <div class="tab-pane active" id="1a">
-                    <div class="col-xs-12 col-sm-4 col-md-4 color-panel">
+                    
+                                <div class="col-xs-12 col-sm-4 col-md-4 color-panel">
                         <div class="divider"><!-- divider -->
+								<i class="fa fa-gamepad"></i>
+							</div>
+                                                        @if (user || pass || email)
+                        {
+                            <label class="label label-warning full" > Tienes permitido editar uno o más campos</label>                      
+                                }  
+                        <div class="input-group">                    
+                            <span class="input-group-addon">Usuario</span>
+                            <input id="user" type="text" value='@ViewBag.Details[6]'  class="form-control" readonly>
+                        </div><br />
+                        @if (pass)
+                        {
+                                                        <div class="input-group">
+                            <span class="input-group-addon">Contraseña</span>
+                            <input id="pass" type="password"  class="form-control">
+                            </div><br />
+                            <script>document.getElementById("user").removeAttribute('readonly')</script>
+                        }
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Correo</span>
+                            <input id="msg" type="email" value='@ViewBag.Details[7]' class="form-control" readonly>
+                        </div><br />
+                        <div>
+                            @if (user || pass || email)
+                        {
+                            <button class="btn btn-danger full" type="submit">Editar</button>                            
+                        }
+                        </div> <br/>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-7 col-md-offset-1 color-panel">
+                    </div>
+				</div>
+                <div class="tab-pane" id="2a">
+          <div class="col-xs-12 col-sm-12 col-md-4 color-panel">
+                       <div class="divider"><!-- divider -->
 								<i class="fa fa-user"></i>
 							</div>
                         <div class="input-group">
                             <span class="input-group-addon">Nombre</span>
-                            <input id="msg" type="text" class="form-control">
+                            <input id="msg" value='@ViewBag.Details[0]' type="text" class="form-control">
                         </div><br />
                         <div class="input-group">
                             <span class="input-group-addon">Apellidos</span>
-                            <input id="msg" type="text" class="form-control">
+                            <input id="msg" value='@ViewBag.Details[1]' type="text" class="form-control">
                         </div><br />
                         <div class="input-group">
                             <span class="input-group-addon">País</span>
-                            <input id="msg" type="text" value="Costa Rica" class="form-control">
+                            <input id="msg" value='@ViewBag.Details[3]' type="text" class="form-control">
                         </div><br />
-                    </div>
-                                <div class="col-xs-12 col-sm-4 col-md-offset-1 col-md-3 color-panel">
-                        <div class="divider"><!-- divider -->
-								<i class="fa fa-gamepad"></i>
-							</div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Usuario</span>
-                            <input id="msg" type="text" class="form-control" readonly>
+                                                <div class="input-group">
+                            <span class="input-group-addon">Teléfono</span>
+                            <input id="msg" type="number" value='@ViewBag.Details[2]' class="form-control"  >
                         </div><br />
-                        <div class="input-group">
-                            <span class="input-group-addon">Correo</span>
-                            <input id="msg" type="email" class="form-control" readonly>
-                        </div><br />
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1 color-panel">
-                        <div class="divider"><!-- divider -->
-								<i class="fa fa-info-circle"></i>
-							</div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Puntos de votación</span>
-                            <input id="msg" type="text" class="form-control" readonly>
-                        </div><br />
-                        <div class="input-group">
-                            <span class="input-group-addon">Puntos de donación</span>
-                            <input id="msg" type="text" class="form-control" readonly>
-                        </div><br />
-                    </div>
-				</div>
-             <div class="tab-pane" id="2a">
+                        <div>
+                            <button class="btn btn-danger full" type="submit">Editar</button>                                                  
+                        </div><br/>
+                         </div>
+            
+            </div>
+             <div class="tab-pane" id="3a">
                                     <div class="col-xs-12 col-sm-6 col-md-4 color-panel">
                          <div class="divider"><!-- divider -->
 								<i class="fa fa-users"></i>
@@ -101,7 +151,7 @@
                     </div>
             
             </div>
-        <div class="tab-pane" id="3a">
+        <div class="tab-pane" id="4a">
                                 <div class="col-xs-12 col-sm-6 col-md-7  color-panel">
                         <div class="divider"><!-- divider -->
 								<i class="fa fa-copy"></i>
@@ -121,7 +171,7 @@
          </div>
 
 
-          <div class="tab-pane" id="4a">
+          <div class="tab-pane" id="5a">
           <div class="col-xs-12 col-sm-12 col-md-12 color-panel">
                         <div class="divider"><!-- divider -->
 								<i class="fa fa-copy"></i>

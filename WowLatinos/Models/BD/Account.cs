@@ -23,8 +23,9 @@ namespace WowLatinos.Models.BD
 
 
         SqlHelper sql;
-        private const string TABLE_ACCOUNT_NAME = "account";
-        private const string TABLE_DETAILS_NAME = "account_details";
+        private const string TABLE_ACCOUNT_NAME = "auth.account";
+        private const string TABLE_DETAILS_NAME = "auth.account_details";
+        private const string TABLE_DETAILS_VIEW = "auth.details";
 
         const string SessionKeyName = "_id";
 
@@ -32,7 +33,18 @@ namespace WowLatinos.Models.BD
         {
             sql = new SqlHelper(TABLE_ACCOUNT_NAME);
         }
-        
+
+
+        public Account(string user, string pass, string email, string first_name, string last_name)
+        {
+            this.user = user;
+            this.pass = pass;
+            this.email = email;
+            this.first_name = first_name;
+            this.last_name = last_name;
+
+            sql = new SqlHelper(TABLE_ACCOUNT_NAME);
+        }
 
         public Account(string user, string pass)
         {
@@ -42,7 +54,8 @@ namespace WowLatinos.Models.BD
             sql = new SqlHelper(TABLE_ACCOUNT_NAME);
         }
 
-        public int Add() {
+        public int Add()
+        {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             data.Add("username", user);
@@ -58,9 +71,10 @@ namespace WowLatinos.Models.BD
             data.Add("last_name", last_name);
 
             sql = new SqlHelper(TABLE_DETAILS_NAME);
-            Startup.connection.SqlStatement(sql.InsertSql(data.Select(i=> i.Key).ToArray()),data);
+            Startup.connection.SqlStatement(sql.InsertSql(data.Select(i => i.Key).ToArray()), data);
 
-            if (Startup.connection.isError) {
+            if (Startup.connection.isError)
+            {
                 string ss = Startup.connection.errorDescription;
                 Startup.connection.RollbackTransaction();
                 return 0;
@@ -70,7 +84,21 @@ namespace WowLatinos.Models.BD
             return s;
         }
 
-        public int ExistsAccount() {
+        public List<string> SelectDetails(int? id)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("id_account",id);
+
+            sql = new SqlHelper(TABLE_DETAILS_VIEW);
+            
+            Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction,username,email"},data.Select(i => i.Key).ToArray()), data);
+
+            return new List<string>(d.Values);
+
+        }
+
+        public int ExistsAccount()
+        {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("username", user);
             data.Add("sha_pass_hash", GetHashData());
@@ -86,7 +114,8 @@ namespace WowLatinos.Models.BD
             return 0;
         }
 
-        private string GetHashData() {
+        private string GetHashData()
+        {
             byte[] bytes = Encoding.UTF8.GetBytes(pass);
 
             var sha1 = SHA1.Create();
@@ -106,15 +135,17 @@ namespace WowLatinos.Models.BD
             return sb.ToString();
         }
 
-        private int Faction() {
-            switch (faction) {
+        private int Faction()
+        {
+            switch (faction)
+            {
                 case "Alianza":
                     return 1;
                 case "Horda":
                     return 2;
             }
 
-            return 0;              
+            return 0;
         }
 
     }
