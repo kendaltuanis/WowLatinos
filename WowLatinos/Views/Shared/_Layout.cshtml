@@ -26,18 +26,23 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/css/core_css.css" />
         <link rel="stylesheet" href="~/css/theme_css_dark.css" />
-         <link rel="stylesheet" href="~/css/site.css" />
-        <!-- REVOLUTION SLIDER -->
+
+         <link rel="stylesheet" type="text/css" href="https://wowgaming.altervista.org/aowow/static/css/basic.css?26"/>
+         <link rel="stylesheet" type="text/css" href="https://wowgaming.altervista.org/aowow/static/css/global.css?26"/>
+<link rel="stylesheet" type="text/css" href="https://wowgaming.altervista.org/aowow/static/css/aowow.css?26"/>
+        <!-- REVOLUTION SLIDER -->       
+          <link rel="stylesheet" href="~/css/site.css" />
         <link href="~/plugins/slider.revolution.v4/css/settings.css" rel="stylesheet" type="text/css" />
     </environment>
 
-    <environment include="Development">
+    <environment include="Development"> 
         <script src="~/plugins/modernizr.min.js"></script>
     </environment>
   
 
 </head>
 <body>
+  
     <div id="fb-root"></div>
 
   
@@ -68,6 +73,8 @@
 
     @{ 
         Boolean is_register = false;
+        HttpContextAccessor.HttpContext.Session.Remove("_load");
+        HttpContextAccessor.HttpContext.Session.Remove("_count");
     }
     
  
@@ -88,21 +95,76 @@
 
                     <script>
                         function publicar() {
-                            FB.ui({
-                                method: 'share',
-                                href: 'https://developers.facebook.com/docs/',
-                                action_properties: JSON.stringify({
-                                    object: 'https://www.facebook.com/extintoresuniversales/',
-                                })
-                            }, function (response) { 
-                                if (response == null) {
-                                    console.log('test1');
-                                }
-                                else {
-                                    console.log(response.post_id);
-                                }  
+                                    FB.getLoginStatus(function(response) {
+if (response.status === 'connected') {
+    var accessToken = response.authResponse.accessToken;
+    alert(accessToken);
+    FB.ui(
+        {
+            method: 'share',
+            href: 'https://developers.facebook.com/docs/',
+            mobile_iframe: true
+        },
+        function(response){
+            console.log(response.id);
+        });
+}
+else {
+    FB.login(function(response){
+        FB.ui(
+        {
+            method: 'share',
+            href: 'https://developers.facebook.com/docs/',
+            mobile_iframe: true
+        },
+        function(response){
+            console.log(response.id);
+        });
+    });
+}
 
-                            });
+});
+                        }
+
+                    </script>
+
+                    <script>
+
+                        function publicar2(){
+                              FB.getLoginStatus(function(response) {
+                            if (response.status === 'connected') {
+                                console.log("conectado");
+                                FB.api('/me/accounts', 'get',function(data) {
+                                    var page_access_token = data.data[0].access_token;                                   
+                                    var pageId= data.data[0].id;
+
+                                    //now post to the page
+                                    var target = '/'+pageId+'/feed'
+
+                                    FB.api(target,
+                                'post',
+                                { message: "otro mensaje sddsdjñsssjlkfsasa",
+                                    description: "prueba",
+                                    link: 'https://cdn.pixabay.com/photo/2015/03/12/12/43/test-670091_960_720.png',
+                                    name: "",
+                                    access_token: page_access_token
+                                }
+                                ,function(response) {
+                                    if (!response || response.error) {
+                                        console.log("in error");
+                                       console.log(response.error);
+                                    } else {
+                                        console.log(response);
+                                    }
+                                });
+                                    
+                                    });
+                                }
+
+
+                              });
+
+                         
                         }
 
                     </script>
@@ -116,10 +178,17 @@
 
                             <!-- LANGUAGE -->
                         <a id="quick_sign_in" href="#" data-toggle="dropdown"><i class="fa fa-sign-in"></i><span class="hidden-xs"> Hola @HttpContextAccessor.HttpContext.Session.GetString("_username")</span></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">                                       
+                           
                             <li>
                                 <a href="/Account/Panel"><i class="fa fa-user"></i>Panel</a>
                             </li>
+                            @if (HttpContextAccessor.HttpContext.Session.GetInt32("_permissions") != null)                                 
+                                    {
+                                         <li>
+                                    <a href="#"><i class="fa fa-cog"></i>Admin</a>
+                                     </li>
+                                    }
                             <li>
                                 <a onclick="logout();" ><i class="fa fa-sign-out"></i>Cerrar sesión</a>
                             </li>
@@ -153,7 +222,7 @@
                         </form>
                         <hr />
 
-                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email" data-use-continue-as="true" onlogin="FirstTimeLogin();"></div>
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email,manage_pages,publish_pages,publish_actions" data-use-continue-as="true" onlogin="FirstTimeLogin();"></div>
                         <a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Conectar con Twitter</a>
                         <a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Conectar con Google</a>
                         <p class="bottom-create-account">
@@ -173,7 +242,7 @@
             <a class="pull-right" id="btn-mobile-quick-cart" href="#"><i class="fa fa-comments"></i></a>
             <!-- CART MOBILE BUTTON -->
             <!-- LINKS -->
-            <div class="pull-right nav hidden-xs">
+            <div class="pull-right nav hidden-xs">              
                 <a href="/Home/Contact"><i class="fa fa-angle-right"></i> Contacto</a>
                 <a href="#" onclick="publicar()"><i class="fa fa-angle-right"></i> Proyectos</a>
             </div>
@@ -218,14 +287,14 @@
                             </a>                          
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-dashboard"></i>Últimos cambios (Servidor)</a></li>
-                                <li><a href="#"><i class="fa fa-newspaper-o"></i>Página</a></li>
+                                <li><a href="/#blog"><i class="fa fa-newspaper-o"></i>Publicaciones <span class="badge" style="font-size:10px">Eventos</span></a></li>
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="fa fa-sign-in"></i>Migraciones</a></li>
                                 <li><a href="#"><i class="fa fa-empire"></i><strong>Promociones</strong></a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">
+                            <a class="dropdown-toggle"  onclick="publicar2();">
                                 Foros
                             </a>
                         </li>
@@ -301,8 +370,8 @@
 
                         <div class="column col-md-4 text-center">
                             <br />
-                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fextintoresuniversales%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1467256803348585" width="340" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                        </div>
+                            <div class="fb-page animate_fade_in" data-href="https://www.facebook.com/WowLatinos-120700001879555/" data-tabs="events" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/WowLatinos-120700001879555/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/WowLatinos-120700001879555/">Wow Latinos</a></blockquote></div>
+                            </div>
                         <!-- /FOOTER CONTACT INFO -->
 
 
@@ -405,7 +474,7 @@
           function FirstTimeLogin(){
             FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
-                
+                        console.log(response.authResponse.accessToken);
                         FB.api('/me','get', { fields: 'id,first_name,last_name,email' }, function(user) {
                      
 
@@ -428,13 +497,14 @@
           }
 
     </script>
+
     <script>
 
     
 
           window.fbAsyncInit = function () {
               FB.init({
-                  appId: '592884567767090',
+                  appId: '243098216204028',
                   xfbml: true,
                   version: 'v2.9'
               });

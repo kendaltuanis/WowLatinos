@@ -51,12 +51,12 @@ namespace WowLatinos.Models.BD
 
         }
 
-        public List<List<string>> Select() {
+        public List<List<string>> Select(int limit=5,int? offset=0) {
 
             Dictionary<string, object> dataWhere = new Dictionary<string, object>();
             dataWhere.Add("show_post", 1);
-
-            List<string> p = Startup.connection.SqlQueryList(sql.SelectSql(new string[] { "id_post, publish_date" }, dataWhere.Select(i => i.Key).ToArray()), dataWhere);
+           
+            List<string> p = Startup.connection.SqlQueryList(string.Format("{0} LIMIT {1} OFFSET {2}",sql.SelectSql(new string[] { "id_post, publish_date" }, dataWhere.Select(i => i.Key).ToArray()),limit,offset), dataWhere);
             List<string> ids = new List<string>();
             List<string> dates = new List<string>();
             for (int i = 0; i < p.Count; i++)
@@ -66,7 +66,8 @@ namespace WowLatinos.Models.BD
                     ids.Add(p[i]);
                 }
                 else {
-                    dates.Add(p[i].Substring(0,9).Replace('/','-'));
+                    string[] split =p[i].Split(' ');
+                    dates.Add(split[0].Replace('/','-'));
                 }
             }
             List<List<string>> pru = new List<List<string>>();

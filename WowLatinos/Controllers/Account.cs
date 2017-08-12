@@ -17,6 +17,10 @@ namespace WowLatinos.Controllers
         private const string SessionKeyUserChange = "_changeU";
         private const string SessionKeyEmailChange = "_changeE";
 
+        private const string SessionKeyPermissions = "_permissions";
+
+
+
         public IActionResult Index()
         {
             return View();
@@ -48,8 +52,11 @@ namespace WowLatinos.Controllers
 
             WowLatinos.Models.BD.Account acc = new Models.BD.Account(user, pass);
 
-            HttpContext.Session.SetInt32(SessionKeyId, acc.ExistsAccount());
+            int idA = acc.ExistsAccount();
+            HttpContext.Session.SetInt32(SessionKeyId, idA);
             HttpContext.Session.SetString(SessionKeyUser, user);
+
+            IsPermissions(idA);
 
             return RedirectToAction("Index", "Home");
         }
@@ -60,6 +67,7 @@ namespace WowLatinos.Controllers
             HttpContext.Session.Remove(SessionKeyUser);
             HttpContext.Session.Remove(SessionKeyPassChange);
             HttpContext.Session.Remove(SessionKeyUserChange);
+            HttpContext.Session.Remove(SessionKeyPermissions);
 
             return RedirectToAction("Index", "Home");
         }
@@ -107,6 +115,8 @@ namespace WowLatinos.Controllers
             HttpContext.Session.SetInt32(SessionKeyId, id_u);
             HttpContext.Session.SetString(SessionKeyUser, first_name);
             IsChanges(id_u);
+
+            IsPermissions(id_u);
 
 
             return RedirectToAction("Index", "Home");
@@ -160,6 +170,17 @@ namespace WowLatinos.Controllers
             if (list[2])
             {
 
+            }
+        }
+
+        private void IsPermissions(int id_u)
+        {
+            Account_Permissions p = new Account_Permissions(id_u);
+            int permissions = p.Select();
+
+            if (permissions != 0)
+            {
+                HttpContext.Session.SetInt32(SessionKeyPermissions, permissions);
             }
         }
 

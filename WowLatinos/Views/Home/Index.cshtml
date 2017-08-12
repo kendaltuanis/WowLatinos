@@ -1,18 +1,19 @@
-﻿
+﻿    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+    @using Microsoft.AspNetCore.Http;
 
 @{ 
     List<List<string>> posts = ViewBag.PostList;
-    string url = "https://www.facebook.com/kendaltuaniss/posts/";
+    string url = "https://www.facebook.com/120700001879555/posts/";
 }
-	<!-- WRAPPER -->
-<div id="wrapper">
 
+
+ 	<!-- WRAPPER -->
+<div id="wrapper" style="margin-top:-65px;" class="sl-top">
 
     <!-- REVOLUTION SLIDER -->
-    <div class="fullscreenbanner-container sl-top">
-        <div class="fullscreenbanner ken-burns">
+    <div class="fullscreenbanner-container" >
+        <div class="fullscreenbanner ken-burns" >
             <ul>
-
                 <!-- SLIDE  -->
                 <li data-transition="fade" data-slotamount="1" data-masterspeed="400" data-delay="5000">
                     <!-- MAIN IMAGE -->
@@ -171,40 +172,37 @@
 
         <div class="divider">
             <!-- divider -->
-            <i class="fa fa-star"></i>
+            <i class="fa fa-gamepad"></i>
         </div>
 
-        <p class="lead">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.</p>
-
-        <hr /><!-- separator -->
         <!-- FEATURED BOXES 4 -->
         <div class="row featured-box-minimal margin-bottom30">
             <div class="col-md-4">
-                <h4><i class="fa fa-group"></i> Development</h4>
+                <h4><i class="fa fa-group"></i> Únete a los grupos</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet.</p>
             </div>
             <div class="col-md-4">
-                <h4> <i class="fa fa-book"></i> HTML5</h4>
+                <h4> <i class="fa fa-calendar"></i> Únete a los eventos</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
             </div>
             <div class="col-md-4">
-                <h4><i class="fa fa-trophy"></i> CSS3</h4>
+                <h4><i class="fa fa-trophy"></i>Saca tus mejores logros</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
             </div>
         </div>
         <!-- /FEATURED BOXES 4 -->
         <!-- FEATURED BOXES 4 -->
         <div class="row featured-box-minimal margin-bottom30">
-            <div class="col-md-4">
-                <h4><i class="fa fa-group"></i> Customer Support</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet.</p>
-            </div>
-            <div class="col-md-4">
-                <h4> <i class="fa fa-book"></i> Sliders</h4>
+             <div class="col-md-4">
+                <h4> <i class="fa fa-thumbs-o-up"></i> Únete a la mejor experiencia</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
             </div>
             <div class="col-md-4">
-                <h4><i class="fa fa-trophy"></i> Elite</h4>
+                <h4> <i class="fa fa-life-ring"></i> Pregúntanos y te ayudamos</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+            </div>
+            <div class="col-md-4">
+                <h4> <i class="fa fa-handshake-o"></i> Danos tus sugerencias</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
             </div>
         </div>
@@ -231,13 +229,12 @@
 
         <section class="container">
 
-            <div class="blog-timeline">
+            <div class="blog-timeline" id="mainblog">
 
 
                 @{
                     bool isLeft = true;
                     DateTime date;
-
                     for (int j = 0; j < posts[0].Count; j++)
                     {
                        
@@ -247,17 +244,16 @@
 
                             if (isLeft)
                             {
-                            <article class="timeline-item pull-left">
+                            <article class="timeline-item pull-left animate_fade_in">
                                
                                 <div class="item-date">
                                     @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
                                 </div>
 
                                 <div class="item">
-
-                                    <div class="fb-post" data-id="" data-href=@url@posts[0][j] data-width="500" data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <div class="fb-post" data-width="auto" data-id="" data-href=@url@posts[0][j] data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
                                     <!-- LEER MÁS button -->
-                                    <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+                                    <a href='@url@posts[0][j]' class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
 
                                 </div>
 
@@ -266,7 +262,7 @@
                         }
                         else
                         {
-                            <article class="timeline-item pull-right">
+                            <article class="timeline-item pull-right animate_fade_in">
 
                                 <div class="item-date">
                                     @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
@@ -274,9 +270,9 @@
                                 <div class="item">
 
                                     <!-- article title -->
-                                    <div class="fb-post" data-id="" data-href=@url@posts[0][j] data-width="500" data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <div class="fb-post" data-width="auto" data-id="" data-href=@url@posts[0][j] data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
                                     <!-- LEER MÁS button -->
-                                    <a href="blog-single-sidebar-left.html" class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+                                    <a href='@url@posts[0][j]' class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
 
                                 </div>
 
@@ -289,20 +285,35 @@
 
 
                 }
-
-
-
-
+                
             </div>
 
 
             <!-- load more -->
             <div class="clearfix"></div>
             <div class="blog-timeline-load-more">
-                <button class="btn btn-primary btn-lg">CARGAR MÁS</button>
+                <button class="btn btn-primary btn-lg" onclick="sip();" id="loadMore">CARGAR MÁS</button>
             </div>
 
         </section>
 
     </div>
+        <script>
+    function sip(){
+ 
+    console.log("si entron");
+            $j.ajax({
+type: 'POST',
+data:{count:'@posts[0].Count'},
+ url: '@Url.Action("_LoadMore", "Home")',                   
+success: function(result) {
+    console.log(result);
+   var ap= $j('#mainblog').append(result);
+   
+}
+    });
+
+
+    }
+</script>
 </div>

@@ -1,0 +1,74 @@
+﻿ @using WowLatinos.Models.BD;
+@{ 
+    string url = "https://www.facebook.com/120700001879555/posts/";
+     List<List<string>> posts = ViewBag.PostList;
+    
+}
+
+  @{
+       bool isLeft;
+                    if(ViewBag.LastCount%2==0){
+                        isLeft=true;
+                    }else{
+                        isLeft=false;
+                    }
+
+                    DateTime date;
+                    
+          
+                    int count=0;
+<script>alert('@posts[0].Count')</script>
+                    for (int j = 0; j < posts[0].Count; j++)
+                    {
+                       
+                            IFormatProvider culture = new System.Globalization.CultureInfo("en-US", true);
+                            date = DateTime.Parse(posts[1][j], culture, System.Globalization.DateTimeStyles.AssumeLocal);
+                            
+
+                            if (isLeft)
+                            {
+                            <article class="timeline-item pull-left" id="articleleft" style="margin-top: 50px;">
+                               
+                                <div class="item-date">
+                                    @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
+                                </div>
+                                
+                                <div class="item">
+                                    <div class="fb-post" data-width="auto" data-id="" data-href=@url@posts[0][j] data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <!-- LEER MÁS button -->
+                                    <a href='@url@posts[0][j]' class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+
+                                </div>
+
+                            </article>
+                            count++;
+                            isLeft = false;
+                        }
+                        else
+                        {
+                            <article class="timeline-item pull-right" style="margin-top: 50px;">
+
+                                <div class="item-date">
+                                    @date.Day <span>@date.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es"))</span>
+                                </div>
+                                <div class="item">
+
+                                    <!-- article title -->
+                                    <div class="fb-post" data-width="auto" data-id="" data-href=@url@posts[0][j] data-show-text="true"><blockquote cite=@url@posts[0][j] class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href=@url@posts[0][j]>jueves, 27 de agosto de 2015</a></blockquote></div>
+                                    <!-- LEER MÁS button -->
+                                    <a href='@url@posts[0][j]' class="btn btn-xs"><i class="fa fa-sign-out"></i> LEER MÁS</a>
+
+                                </div>
+
+                            </article>
+                            count++;
+                            isLeft = true;
+                        }
+
+
+                    }
+
+                }
+<script>
+    FB.XFBML.parse();
+</script>
