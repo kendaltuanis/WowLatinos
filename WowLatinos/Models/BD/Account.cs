@@ -25,7 +25,9 @@ namespace WowLatinos.Models.BD
         SqlHelper sql;
         private const string TABLE_ACCOUNT_NAME = "auth.account";
         private const string TABLE_DETAILS_NAME = "auth.account_details";
-        private const string TABLE_DETAILS_VIEW = "auth.details";
+        private const string TABLE_PERSONAL_DATA_VIEW = "auth.personal_data";
+        private const string TABLE_MAIN_DATA_VIEW = "auth.account_main";
+        
 
         const string SessionKeyName = "_id";
 
@@ -84,14 +86,28 @@ namespace WowLatinos.Models.BD
             return s;
         }
 
-        public List<string> SelectDetails(int? id)
+        public List<string> SelectPersonalData(int? id)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("id_account",id);
 
-            sql = new SqlHelper(TABLE_DETAILS_VIEW);
+            sql = new SqlHelper(TABLE_PERSONAL_DATA_VIEW);
             
             Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction,username,email"},data.Select(i => i.Key).ToArray()), data);
+
+            return new List<string>(d.Values);
+
+        }
+
+        // puntos de donacion y potacion
+        public List<string> SelectAccountData(int? id)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("id_account", id);
+
+            sql = new SqlHelper(TABLE_MAIN_DATA_VIEW);
+
+            Dictionary<string, string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[] { "joindate,locked,donation,vote,exp" }, data.Select(i => i.Key).ToArray()), data);
 
             return new List<string>(d.Values);
 
@@ -116,7 +132,7 @@ namespace WowLatinos.Models.BD
 
         private string GetHashData()
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(pass);
+            byte[] bytes = Encoding.UTF8.GetBytes(string.Format("{0}:{1}",user.ToUpper(),pass.ToUpper()));
 
             var sha1 = SHA1.Create();
             byte[] hashBytes = sha1.ComputeHash(bytes);

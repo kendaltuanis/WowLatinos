@@ -79,8 +79,11 @@ namespace WowLatinos.Controllers
                 return RedirectToAction("Index", "Home");
             }
             WowLatinos.Models.BD.Account acc = new WowLatinos.Models.BD.Account();
+            WowLatinos.Models.BD.Characters pj = new WowLatinos.Models.BD.Characters();
             int? i = HttpContext.Session.GetInt32("_id");
-            ViewBag.Details = acc.SelectDetails(i);
+            ViewBag.Details = acc.SelectPersonalData(i);
+            ViewBag.Characters = pj.Pjs(i);
+            ViewBag.Main = acc.SelectAccountData(i);
 
             return View();
         }

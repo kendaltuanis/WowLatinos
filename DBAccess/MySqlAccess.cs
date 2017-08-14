@@ -71,7 +71,9 @@ namespace DBAccess
             }
             finally
             {
-               resultSet.Close();
+                if (resultSet!=null) {
+                    resultSet.Close();
+                }
             }
             return dic;
 
