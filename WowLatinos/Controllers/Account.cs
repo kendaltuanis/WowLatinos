@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Globalization;
 using WowLatinos.Models.BD;
+using Microsoft.AspNetCore.Mvc.Rendering; 
 
 namespace WowLatinos.Controllers
 {
@@ -16,10 +17,10 @@ namespace WowLatinos.Controllers
         private const string SessionKeyPassChange = "_changeP";
         private const string SessionKeyUserChange = "_changeU";
         private const string SessionKeyEmailChange = "_changeE";
-
         private const string SessionKeyPermissions = "_permissions";
 
-
+        public string CountryCode { get; set; }
+        public SelectList CountryList { get; set; }
 
         public IActionResult Index()
         {
@@ -81,13 +82,21 @@ namespace WowLatinos.Controllers
             WowLatinos.Models.BD.Account acc = new WowLatinos.Models.BD.Account();
             WowLatinos.Models.BD.Characters pj = new WowLatinos.Models.BD.Characters();
             int? i = HttpContext.Session.GetInt32("_id");
-            ViewBag.Details = acc.SelectPersonalData(i);
-            ViewBag.Characters = pj.Pjs(i);
             ViewBag.Main = acc.SelectAccountData(i);
+            ViewBag.Details = acc.SelectPersonalData(i);
+            ViewBag.Characters= pj.Pjs(i);
+             ViewBag.CharactersMain =null;
 
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CharactersMainData(int id)
+        {
+            WowLatinos.Models.BD.Characters pj = new WowLatinos.Models.BD.Characters();
+
+            return Json(pj.MainData(id));
+        }
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

@@ -1,206 +1,215 @@
-﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
-    @using Microsoft.AspNetCore.Mvc;
-    @using Microsoft.AspNetCore.Http;
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor; 
+@using Microsoft.AspNetCore.Mvc; @using Microsoft.AspNetCore.Http;
 
 
-    @{
-        Boolean user = false;
-        Boolean pass = false;
-        Boolean email = false;
-        String is_active=(ViewBag.Main[1].ToString().Equals("0")) ? "Activo" : "Baneada";
-    }
 
-    @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeU") == 1)
-    {
-        user = true;
-    }
-    @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeP") == 1)
-    {
-        pass = true;
-        if (user)
-        {
-            <script>alert("Te recomendamos cambiar tu usuario y contraseña, ya que fue creada por Facebook")</script>
-        }
-    }
-    @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeE") == 1)
-    {
-        email = true;
-    }
+@{ Boolean user = false; Boolean pass = false; 
+Boolean email = false; 
+String is_active=(ViewBag.Main[3].ToString().Equals("0"))? "Activo" : "Baneada"; } 
+@if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeU") == 1) { user = true; } 
+@if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeP")== 1) { pass = true; }
+if (user) {
+<script>
+    alert("Te recomendamos cambiar tu usuario y contraseña, ya que fue creada por Facebook")
+</script>
+} 
+ @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeE") == 1) { email = true; }
+     //onchange="document.forms[0].submit()
+ }
 
 
-    <!-- WRAPPER -->
-    <div id="wrapper">
+<!-- WRAPPER -->
+<div id="wrapper">
 
-        <!-- PAGE TITLE -->
-        <header id="page-title">
-            <div class="container">
-                <h1>Panel de usuario</h1>
+    <!-- PAGE TITLE -->
+    <header id="page-title">
+        <div class="container">
+            <h1>Panel de usuario</h1>
 
-                <ul class="breadcrumb">
-                    <li><a href="/">Inicio</a></li>
-                    <li class="active">Panel</li>
-                </ul>
-            </div>
-        </header>
-
-        <section class="container">
-
-            <ul class="nav nav-pills" style="margin-bottom: 20px;margin-top: 10px;">
-                <li class="active">
-                    <a href="#1a" data-toggle="tab"><b>Cuenta</b></a>
-                </li>
-                <li>
-                    <a href="#2a" data-toggle="tab"><b>Datos personales</b></a>
-                </li>
-                <li>
-                    <a href="#3a" data-toggle="tab"><b>Personajes</b></a>
-                </li>
-                <li>
-                    <a href="#4a" data-toggle="tab"><b>Recluta a un amigo</b></a>
-                </li>
-                <li>
-                    <a href="#5a" data-toggle="tab"><b>Personalizar</b></a>
-                </li>
+            <ul class="breadcrumb">
+                <li><a href="/">Inicio</a></li>
+                <li class="active">Panel</li>
             </ul>
+        </div>
+    </header>
 
-            <div class="tab-content clearfix">
-                <div class="row tab-pane active" id="1a">
-                    <div class="container">
+    <section class="container">
 
-                        <div class="col-xs-12 col-sm-4 col-md-4 color-panel">
-                            <br />
-                            @if (user || pass || email)
-                            {
-                                <label class="label label-warning full"> Tienes permitido editar uno o más campos</label>
-                            }
-                            <div class="input-group">
-                                <span class="input-group-addon">Usuario</span>
-                                <input id="user" type="text" value='@ViewBag.Details[6]' class="form-control" readonly>
-                            </div><br />
-                            @if (pass)
-                            {
-                                <div class="input-group">
-                                    <span class="input-group-addon">Contraseña</span>
-                                    <input id="pass" type="password" class="form-control">
-                                </div><br />
-                                <script>document.getElementById("user").removeAttribute('readonly')</script>
-                            }
+        <ul class="nav nav-pills" style="margin-bottom: 20px;margin-top: 10px;">
+            <li class="active">
+                <a href="#1a" data-toggle="tab"><b>Cuenta</b></a>
+            </li>
+            <li>
+                <a href="#2a" data-toggle="tab"><b>Datos personales</b></a>
+            </li>
+            <li>
+                <a href="#3a" data-toggle="tab"><b>Personajes</b></a>
+            </li>
+            <li>
+                <a href="#4a" data-toggle="tab"><b>Recluta a un amigo</b></a>
+            </li>
+            <li>
+                <a href="#5a" data-toggle="tab"><b>Personalizar</b></a>
+            </li>
+        </ul>
 
-                            <div class="input-group">
-                                <span class="input-group-addon">Correo</span>
-                                <input id="msg" type="email" value='@ViewBag.Details[7]' class="form-control" readonly>
-                            </div><br />
-                            <div>
-                                @if (user || pass || email)
-                                {
-                                    <button class="btn btn-danger full" type="submit">Editar</button>
-                                }
-                            </div> <br />
+        <div class="tab-content clearfix">
+            <div class="row tab-pane active" id="1a">
+                <div class="container">
 
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-7 col-md-offset-1 panel-extra">
-                            <label class="label label-default full"><b><u>Creación de la cuenta: </u></b>@ViewBag.Main[0]</label>
-                            <label class="label label-default full"><b><u>Estado de la cuenta:</u> </b>@is_active</label><br />
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label class="label label-default full"><b><u>Pts votación:</u> </b>@ViewBag.Main[2]</label>                                 
-                                </div> 
-                                <div class="col-xs-6">
-                                    <label class="label label-default full"><b><u>Pts donación:</u> </b>@ViewBag.Main[3]</label>
-                                </div>
-                            </div>    
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tab-pane" id="2a">
-                    <div class="col-xs-12 col-sm-12 col-md-4 color-panel">
-                        <br />
+                    <div class="col-xs-12 col-sm-4 col-md-4 color-panel">
+                        <br /> @if (user || pass || email) {
+                        <label class="label label-warning full"> Tienes permitido editar uno o más campos</label> }
                         <div class="input-group">
-                            <span class="input-group-addon">Nombre</span>
-                            <input id="msg" value='@ViewBag.Details[0]' type="text" class="form-control">
+                            <span class="input-group-addon">Usuario</span>
+                            <input id="user" type="text" value='@ViewBag.Main[0]' class="form-control" readonly>
+                        </div><br /> @if (pass) {
+                        <div class="input-group">
+                            <span class="input-group-addon">Contraseña</span>
+                            <input id="pass" type="password" class="form-control">
                         </div><br />
+                        <script>
+                            document.getElementById("user").removeAttribute('readonly')
+                        </script>
+                        }
+
                         <div class="input-group">
-                            <span class="input-group-addon">Apellidos</span>
-                            <input id="msg" value='@ViewBag.Details[1]' type="text" class="form-control">
-                        </div><br />
-                        <div class="input-group">
-                            <span class="input-group-addon">País</span>
-                            <input id="msg" value='@ViewBag.Details[3]' type="text" class="form-control">
-                        </div><br />
-                        <div class="input-group">
-                            <span class="input-group-addon">Teléfono</span>
-                            <input id="msg" type="number" value='@ViewBag.Details[2]' class="form-control">
+                            <span class="input-group-addon">Correo</span>
+                            <input id="msg" type="email" value='@ViewBag.Main[1]' class="form-control" readonly>
                         </div><br />
                         <div>
-                            <button class="btn btn-danger full" type="submit">Editar</button>
-                        </div><br />
-                    </div>
-
-                </div>
-                <div class="tab-pane" id="3a">
-                    <div class="col-xs-12 col-sm-6 col-md-4 color-panel">
-                        <br />
-
-                        <select class="form-control pointer">
-                            @foreach (var message in @ViewBag.Characters)
-                            {
-                        <option value="">@message</option>
-                            }
-
-                        </select><br />
-                        <label class="small_thin_grey text-center"><span class="text-info text-center">Última conexión:</span> 12/02/2016</label><br />
-                        <label class="small_thin_grey text-center"><span class="text-info text-center">Nivel:</span> 80</label><br />
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-8 color-panel">
+                            @if (user || pass || email) {
+                            <button class="btn btn-danger full" type="submit">Editar</button> }
+                        </div> <br />
 
                     </div>
-
-                </div>
-                <div class="tab-pane" id="4a">
-                    <div class="col-xs-12 col-sm-6 col-md-7  color-panel">
-                        <br />
-                        <input class="form-control" value="http://www.wowlatinos.net/register?r=4390" /><br />
-                        <label class="text-info"> Copia este link y dácelo a tus amigos. Con esto podrás recibir recompensas como:</label><br />
-                        <label class="text-center">* 5 puntos de donación (por cada nuevo amigo).</label><br />
-                        <label class="text-center">* 2 piezas de leveo a escoger.</label><br /><br /><br />
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-5  color-panel">
-                        <img src="~/images/recruit_friend.jpg" width="100%" height="263px" />
-                    </div>
-
-                </div>
-                <div class="tab-pane" id="5a">
-                    <div class="col-xs-12 col-sm-12 col-md-12 color-panel">
-                        <br />
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th> <button class="btn btn-info center-block">Nombre</button></th>
-                                        <th> <button class="btn btn-info center-block">Facción</button></th>
-                                        <th> <button class="btn btn-info center-block">Raza</button></th>
-                                        <th> <button class="btn btn-info center-block">Aspecto (incluye nombre)</button></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="col-xs-12 col-sm-4 col-md-7 col-md-offset-1 panel-extra">
+                        <label class="label label-default full"><b><u>Creación de la cuenta: </u></b>@ViewBag.Main[2]</label>
+                        <label class="label label-default full"><b><u>Estado de la cuenta:</u> </b>@is_active</label><br
+                        />
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="label label-default full"><b><u>Pts votación:</u> </b>@ViewBag.Main[3]</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="label label-default full"><b><u>Pts donación:</u> </b>@ViewBag.Main[4]</label>
+                            </div>
                         </div>
-                        <label class="text-center"> Estos cambios se realizan dentro del juego. Acá solamente se solicitan. *CERRAR EL JUEGO CUANDO SE REALIZAN*</label><br />
                     </div>
 
                 </div>
             </div>
-            <div class="divider">
-                <!-- divider -->
-                <i class="fa fa-thumbs-up"></i>
-            </div>
-            <!-- CALLOUT -->
-            <div class="bs-callout text-center nomargin-bottom">
-                <div class="col-md-12">
-                    <h3><strong>Ayúdanos</strong> a crecer <a href="/Account/Panel" class="btn btn-primary btn-lg">Votar</a></h3><br />
+            <div class="tab-pane" id="2a">
+                <div class="col-xs-12 col-sm-12 col-md-4 color-panel">
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre</span>
+                        <input id="msg" value='@ViewBag.Details[0]' type="text" class="form-control">
+                    </div><br />
+                    <div class="input-group">
+                        <span class="input-group-addon">Apellidos</span>
+                        <input id="msg" value='@ViewBag.Details[1]' type="text" class="form-control">
+                    </div><br />
+                    <div class="input-group">
+                        <span class="input-group-addon">País</span>
+                        <input id="msg" value='@ViewBag.Details[3]' type="text" class="form-control">
+                    </div><br />
+                    <div class="input-group">
+                        <span class="input-group-addon">Teléfono</span>
+                        <input id="msg" type="number" value='@ViewBag.Details[2]' class="form-control">
+                    </div><br />
+                    <div>
+                        <button class="btn btn-danger full" type="submit">Editar</button>
+                    </div><br />
                 </div>
+
             </div>
-            <!-- /CALLOUT -->
-        </section>
-    </div>
-    <!-- /WRAPPER -->
+        
+            <div class="tab-pane" id="3a">
+                <div class="col-xs-12 col-sm-6 col-md-4 color-panel">
+                    <br /> @using (Html.BeginForm("CharactersMainData", "Account", FormMethod.Post)) {
+                         @Html.DropDownList("Characters",null,"Selecciona un personaje",new { @onchange="CallChangefunc(this.value)" ,@class = "form-control"}) }
+                     <img src="" id="class" alt="Clase"> 
+                     <img src="" id="race" alt="Raza"> 
+
+                    <label class="small_thin_grey text-center"><span class="text-info text-center">Última conexión:</span> </label><br
+                    />
+                    <label class="small_thin_grey text-center"><span class="text-info text-center">Nivel:</span> 80</label><br
+                    />
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-8 color-panel">
+
+                </div>
+
+            </div>
+            <div class="tab-pane" id="4a">
+                <div class="col-xs-12 col-sm-6 col-md-7  color-panel">
+                    <br />
+                    <input class="form-control" value="http://www.wowlatinos.net/register?r=4390" /><br />
+                    <label class="text-info"> Copia este link y dácelo a tus amigos. Con esto podrás recibir recompensas como:</label><br
+                    />
+                    <label class="text-center">* 5 puntos de donación (por cada nuevo amigo).</label><br />
+                    <label class="text-center">* 2 piezas de leveo a escoger.</label><br /><br /><br />
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-5  color-panel">
+                    <img src="~/images/recruit_friend.jpg" width="100%" height="263px" />
+                </div>
+
+            </div>
+            <div class="tab-pane" id="5a">
+                <div class="col-xs-12 col-sm-12 col-md-12 color-panel">
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> <button class="btn btn-info center-block">Nombre</button></th>
+                                    <th> <button class="btn btn-info center-block">Facción</button></th>
+                                    <th> <button class="btn btn-info center-block">Raza</button></th>
+                                    <th> <button class="btn btn-info center-block">Aspecto (incluye nombre)</button></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <label class="text-center"> Estos cambios se realizan dentro del juego. Acá solamente se solicitan. *CERRAR EL JUEGO CUANDO SE REALIZAN*</label><br
+                    />
+                </div>
+
+            </div>
+        </div>
+        <div class="divider">
+            <!-- divider -->
+            <i class="fa fa-thumbs-up"></i>
+        </div>
+        <!-- CALLOUT -->
+        <div class="bs-callout text-center nomargin-bottom">
+            <div class="col-md-12">
+                <h3><strong>Ayúdanos</strong> a crecer <a href="/Account/Panel" class="btn btn-primary btn-lg">Votar</a></h3><br
+                />
+            </div>
+        </div>
+        <!-- /CALLOUT -->
+    </section>
+</div>
+
+<!-- /WRAPPER -->
+<script>
+function CallChangefunc(val){
+    if(val==""){
+        return;
+    }
+            $j.ajax({
+type: 'POST',
+data:{id:val},
+datatype: "json",
+ url: '@Url.Action("CharactersMainData", "Account")',                   
+success: function(data) {
+    alert(data);
+        $j('#race').attr('src', data[0]);
+        $j('#class').attr('src', data[1]);
+  
+}
+    });
+
+}
+</script>

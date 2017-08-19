@@ -27,6 +27,8 @@ namespace WowLatinos.Models.BD
         private const string TABLE_DETAILS_NAME = "auth.account_details";
         private const string TABLE_PERSONAL_DATA_VIEW = "auth.personal_data";
         private const string TABLE_MAIN_DATA_VIEW = "auth.account_main";
+
+        private const string TABLE_POINTS = "auth.account_points";
         
 
         const string SessionKeyName = "_id";
@@ -75,6 +77,13 @@ namespace WowLatinos.Models.BD
             sql = new SqlHelper(TABLE_DETAILS_NAME);
             Startup.connection.SqlStatement(sql.InsertSql(data.Select(i => i.Key).ToArray()), data);
 
+             data = new Dictionary<string, object>();
+             data.Add("id_account", s);
+
+            sql = new SqlHelper(TABLE_POINTS);
+            Startup.connection.SqlStatement(sql.InsertSql(data.Select(i => i.Key).ToArray()), data);
+
+
             if (Startup.connection.isError)
             {
                 string ss = Startup.connection.errorDescription;
@@ -93,7 +102,7 @@ namespace WowLatinos.Models.BD
 
             sql = new SqlHelper(TABLE_PERSONAL_DATA_VIEW);
             
-            Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction,username,email"},data.Select(i => i.Key).ToArray()), data);
+            Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction"},data.Select(i => i.Key).ToArray()), data);
 
             return new List<string>(d.Values);
 
@@ -107,8 +116,7 @@ namespace WowLatinos.Models.BD
 
             sql = new SqlHelper(TABLE_MAIN_DATA_VIEW);
 
-            Dictionary<string, string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[] { "joindate,locked,donation,vote,exp" }, data.Select(i => i.Key).ToArray()), data);
-
+            Dictionary<string, string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[] { "username,email,joindate,locked,donation,vote,exp" }, data.Select(i => i.Key).ToArray()), data);
             return new List<string>(d.Values);
 
         }
