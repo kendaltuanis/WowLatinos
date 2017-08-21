@@ -29,12 +29,6 @@ namespace WowLatinos.Models.BD
             data.Add("account", id_account);
             List<string> list = Startup.connection.SqlQueryList(sql.SelectSql(new string[] { "guid,name" }, data.Select(i => i.Key).ToArray()), data);
 
-            list.Add("12321");
-            list.Add("pedro");
-            list.Add("12322");
-            list.Add("shahak");
-            list.Add("12323");
-            list.Add("kahahs");
 
             List<SelectListItem> items = new List<SelectListItem>();
 
@@ -56,7 +50,7 @@ namespace WowLatinos.Models.BD
             data.Add("guid", guid);
             sql = new SqlHelper(TABLE_CHARACTER_MAIN);
 
-            List<string> acc = Startup.connection.SqlQueryList(sql.SelectSql(new string[] { "race,class,gender,level,money,online,health,last_login" }, data.Select(i => i.Key).ToArray()), data);
+            List<string> acc = Startup.connection.SqlQueryList(sql.SelectSql(new string[] { "race,class,gender,level,money,online,health" }, data.Select(i => i.Key).ToArray()), data);
 
 
             list.Add(urlImageRaceGender(Convert.ToInt16(acc[0]), Convert.ToInt16(acc[2])));
@@ -88,7 +82,7 @@ namespace WowLatinos.Models.BD
 
         private string urlImageRaceGender(int race, int gender)
         {
-            StringBuilder url = new StringBuilder("http://wow.zamimg.com/images/wow/icons/medium/race_");
+            StringBuilder url = new StringBuilder("http://wow.zamimg.com/images/wow/icons/large/race_");
             switch (race)
             {
                 case 1:
@@ -97,28 +91,28 @@ namespace WowLatinos.Models.BD
                 case 2:
                     url.Append("orc");
                     break;
-                case 4:
+                case 3:
                     url.Append("dwarf");
                     break;
-                case 8:
+                case 4:
                     url.Append("nightelf");
                     break;
-                case 16:
+                case 5:
                     url.Append("scourge");
                     break;
-                case 32:
+                case 6:
                     url.Append("tauren");
                     break;
-                case 64:
+                case 7:
                     url.Append("gnome");
                     break;
-                case 128:
+                case 8:
                     url.Append("troll");
                     break;
-                case 512:
+                case 10:
                     url.Append("bloodelf");
                     break;
-                case 1024:
+                case 11:
                     url.Append("draenei");
                     break;
 
@@ -130,7 +124,7 @@ namespace WowLatinos.Models.BD
                 case 0:
                     url.Append("_male");
                     break;
-                case 2:
+                case 1:
                     url.Append("_female");
                     break;
             }
@@ -140,7 +134,7 @@ namespace WowLatinos.Models.BD
 
         private string urlClass(int clas)
         {
-            StringBuilder url = new StringBuilder("http://wow.zamimg.com/images/wow/icons/medium/class_");
+            StringBuilder url = new StringBuilder("http://wow.zamimg.com/images/wow/icons/large/class_");
 
             switch (clas)
             {
@@ -150,25 +144,25 @@ namespace WowLatinos.Models.BD
                 case 2:
                     url.Append("paladin");
                     break;
-                case 4:
+                case 3:
                     url.Append("hunter");
                     break;
-                case 16:
+                case 5:
                     url.Append("priest");
                     break;
-                case 32:
+                case 6:
                     url.Append("deathknight");
                     break;
-                case 64:
+                case 7:
                     url.Append("shaman");
                     break;
-                case 128:
+                case 8:
                     url.Append("mage");
                     break;
-                case 256:
+                case 9:
                     url.Append("warlock");
                     break;
-                case 1024:
+                case 11:
                     url.Append("druid");
                     break;
 

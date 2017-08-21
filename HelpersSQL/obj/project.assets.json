@@ -37,7 +37,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "zOu6gklqoKoo/gNkIA3dh8XWsyXU15dv3qGa9/V26zCRuAKSEpwCByRHVnsRBlaHZtp6adQtUET0in0DwJaubA==",
+      "sha512": "/Yjc8p4Juw6vED0AZPiU6/+Zsk4QiiAueOSPuaErbcZjPRldqHM7N6o5A8wt7ULNEXNAQXUeoQsId57IscXzOg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -50,7 +50,7 @@
       ]
     },
     "Microsoft.Packaging.Tools/1.0.0-preview1-25301-01": {
-      "sha512": "i0gGYp5lCB3NVx3FglfIXsRZ0kld4e+Wr++svzMOB1g21mos0yOFmohLujdb/HqkjaJfENdH5/CCV5rfhb2RWw==",
+      "sha512": "HLbxdHc0P2Ruj8xQK2HNtu7xvsJXpIlz7s6Pon5/ofRdX5YA105aA8DuBdcyL95xsQUQYo3WikGiGXloiEwNcA==",
       "type": "package",
       "path": "microsoft.packaging.tools/1.0.0-preview1-25301-01",
       "files": [
@@ -75,7 +75,7 @@
       ]
     },
     "NETStandard.Library/2.0.0-preview1-25301-01": {
-      "sha512": "JgI5IsPMAkYqYeahc+T1G20qqE2qu/P0ZyW2GUPUxxfiT2nQGNDDPq9KHCPUODA3AMSHOp1Vnp6Sxa6jgVYfkg==",
+      "sha512": "/qF9JZJ21dE3ZowxDq9QN3hA6NQhH1pH2Acwy346Pkzev9vtgmbNm+1vgqB9CgiAsi/DUkCoidMNYud/hjhYPg==",
       "type": "package",
       "path": "netstandard.library/2.0.0-preview1-25301-01",
       "files": [
@@ -208,15 +208,15 @@
     ]
   },
   "packageFolders": {
-    "/home/kendall/.nuget/packages/": {}
+    "C:\\Users\\Kendall Umaña\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kendall/WowLatinos/HelpersSQL/HelpersSQL.csproj",
+      "projectUniqueName": "C:\\Users\\Kendall Umaña\\documents\\visual studio 2017\\Projects\\WowLatinos\\HelpersSQL\\HelpersSQL.csproj",
       "projectName": "HelpersSQL",
-      "projectPath": "/home/kendall/WowLatinos/HelpersSQL/HelpersSQL.csproj",
-      "outputPath": "/home/kendall/WowLatinos/HelpersSQL/obj/",
+      "projectPath": "C:\\Users\\Kendall Umaña\\documents\\visual studio 2017\\Projects\\WowLatinos\\HelpersSQL\\HelpersSQL.csproj",
+      "outputPath": "C:\\Users\\Kendall Umaña\\documents\\visual studio 2017\\Projects\\WowLatinos\\HelpersSQL\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -233,7 +233,8 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0-preview1-25301-01"
+            "version": "2.0.0-preview1-25301-01",
+            "autoReferenced": true
           }
         },
         "imports": [

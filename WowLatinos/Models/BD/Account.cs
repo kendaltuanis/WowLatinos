@@ -102,7 +102,7 @@ namespace WowLatinos.Models.BD
 
             sql = new SqlHelper(TABLE_PERSONAL_DATA_VIEW);
             
-            Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction"},data.Select(i => i.Key).ToArray()), data);
+            Dictionary<string,string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[]{"first_name,last_name,phone,country,birth,faction,bio"},data.Select(i => i.Key).ToArray()), data);
 
             return new List<string>(d.Values);
 
@@ -116,7 +116,7 @@ namespace WowLatinos.Models.BD
 
             sql = new SqlHelper(TABLE_MAIN_DATA_VIEW);
 
-            Dictionary<string, string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[] { "username,email,joindate,locked,donation,vote,exp" }, data.Select(i => i.Key).ToArray()), data);
+            Dictionary<string, string> d = Startup.connection.SqlQuery(sql.SelectSql(new string[] { "username,email,joindate,last_login,locked,donation,vote,exp" }, data.Select(i => i.Key).ToArray()), data);
             return new List<string>(d.Values);
 
         }

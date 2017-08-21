@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySql.Data.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -60,7 +61,16 @@ namespace DBAccess
                 while (resultSet.Read())
                 {
                     for (int i = 0; i < resultSet.FieldCount; i++) {
-                        object s = resultSet.GetValue(i);
+                        object s=null;
+                        try
+                        {
+                             s = resultSet.GetValue(i);
+                        }
+                        catch (MySqlConversionException e)
+                        {
+                            s = "Ninguna conexión";
+                        }
+                        
                         dic.Add(resultSet.GetName(i), (s==null) ? "" : s.ToString());
                     }
                 }
@@ -69,6 +79,7 @@ namespace DBAccess
             {
                 this.ProcessException(e);
             }
+
             finally
             {
                 if (resultSet!=null) {
