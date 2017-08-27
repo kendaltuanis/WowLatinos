@@ -29,11 +29,12 @@ C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/DBAccess/HelpersSQ
 /home/kendall/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.AssemblyInfo.cs
 /home/kendall/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.dll
 /home/kendall/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.pdb
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\bin\Debug\netstandard2.0\HelpersSQL.deps.json
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\bin\Debug\netstandard2.0\HelpersSQL.dll
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\bin\Debug\netstandard2.0\HelpersSQL.pdb
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\obj\Debug\netstandard2.0\HelpersSQL.csprojResolveAssemblyReference.cache
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\obj\Debug\netstandard2.0\HelpersSQL.csproj.CoreCompileInputs.cache
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\obj\Debug\netstandard2.0\HelpersSQL.AssemblyInfo.cs
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\obj\Debug\netstandard2.0\HelpersSQL.dll
-C:\Users\Kendall Umaña\documents\visual studio 2017\Projects\WowLatinos\HelpersSQL\obj\Debug\netstandard2.0\HelpersSQL.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/bin/Debug/netstandard2.0/HelpersSQL.deps.json
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/bin/Debug/netstandard2.0/HelpersSQL.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/bin/Debug/netstandard2.0/HelpersSQL.pdb
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.csprojResolveAssemblyReference.cache
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.csproj.CoreCompileInputs.cache
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.AssemblyInfo.cs
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.dll
+C:/Users/Kendall Umaña/documents/visual studio 2017/Projects/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.pdb
+/home/kendall/WowLatinos/HelpersSQL/obj/Debug/netstandard2.0/HelpersSQL.csprojResolveAssemblyReference.cache

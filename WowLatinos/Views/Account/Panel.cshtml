@@ -6,8 +6,11 @@
     @{ Boolean user = false; Boolean pass = false;
         Boolean email = false;
         String is_active = (ViewBag.Main[4].ToString().Equals("0")) ? "Activo" : "Baneada";
-        String faction = (ViewBag.Details[6].ToString().Equals("0")) ? "Alianza" : "Horda";
-     }
+        String faction=null;
+        if(ViewBag.Details[6]!=""){
+                    faction = (ViewBag.Details[6].ToString().Equals("0")) ? "Alianza" : "Horda";
+        }
+}
     @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeU") == 1) { user = true; }
     @if (HttpContextAccessor.HttpContext.Session.GetInt32("_changeP") == 1) { pass = true; }
     if (user) {
@@ -22,6 +25,7 @@
 
     <!-- WRAPPER -->
     <div id="wrapper">
+        <div class="back-panel-wow">
 
         <!-- PAGE TITLE -->
         <header id="page-title">
@@ -65,12 +69,12 @@
                                 <label class="label label-warning full"> Tienes permitido editar uno o más campos</label> }
                             <div class="container-fluid">
                                 <label for="user" class="q5">Usuario</label>
-                                <input id="user" type="text" value='@ViewBag.Main[0]' class="form-control" readonly>
+                                <input id="user" type="text" value='@ViewBag.Main[0]' class="form-control insi" readonly>
                             </div><br /> @if (pass)
                             {
                                 <div class="container-fluid">
                                     <label for="pass " class="q5">Contraseña</label>
-                                    <input id="pass" type="password" class="form-control">
+                                    <input id="pass" type="password" class="form-control insi">
                                 </div><br />
                                 <script>
                                     document.getElementById("user").removeAttribute('readonly')
@@ -79,7 +83,7 @@
 
                             <div class="container-fluid">
                                 <label for="msg" class="q5">Correo</label>
-                                <input id="msg" type="email" value='@ViewBag.Main[1]' class="form-control" readonly>
+                                <input id="msg" type="email" value='@ViewBag.Main[1]' class="form-control insi" readonly>
                             </div><br />
                             <div>
                                 @if (user || pass || email)
@@ -232,6 +236,7 @@
             </div>
             <!-- /CALLOUT -->
         </section>
+        </div>
     </div>
 
     <!-- /WRAPPER -->

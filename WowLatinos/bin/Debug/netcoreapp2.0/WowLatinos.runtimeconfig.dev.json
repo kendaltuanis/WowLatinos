@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Kendall Umaña\\.nuget\\packages"
+      "/home/kendall/.nuget/packages"
     ]
   }
 }
